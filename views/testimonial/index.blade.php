@@ -82,13 +82,13 @@ Terjadi kesalahan dalam menyimpan data.<br>
                                 <div class="col-lg-12 col-xs-12">
                                     {{recentTestimonial()->links()}}
                                 </div>
-                                <form class="col-lg-12 col-xs-12 contact-form">
+                                <form class="col-lg-12 col-xs-12 contact-form" action="{{url('testimonial')}}" method="post">
                                     <h3>Kirim Testimonial</h3>
                                     <p class="form-group">
-                                        <input class="form-control" placeholder="Nama" type="text" required>
+                                        <input class="form-control" placeholder="Nama" name="nama" type="text" required>
                                     </p>
                                     <p class="form-group">
-                                        <textarea class="form-control" placeholder="Pesan" required></textarea>
+                                        <textarea class="form-control" placeholder="Pesan" name="testimonial" required></textarea>
                                     </p>
                                     <button class="btn-send" type="submit">Kirim</button>
                                 </form>

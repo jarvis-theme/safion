@@ -1,3 +1,23 @@
+@if(Session::has('msg2'))
+<div class="success" id='message' style='display:none'>
+    Terima kasih, pesan anda sudah terkirim.
+</div>
+@endif
+@if(Session::has('msg3'))
+<div class="success" id='message' style='display:none'>
+    Maaf, pesan anda belum terkirim.
+</div>
+@endif
+@if($errors->all())
+<div class="error" id='message' style='display:none'>
+    Terjadi kesalahan dalam menyimpan data.<br><br>
+    <ul>
+        @foreach($errors->all() as $message)
+        <li>{{ $message }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
                 <div class="container">
                     <div class="inner-column row">
                         <section id="breadcrumb">
@@ -68,20 +88,17 @@
                                     <div class="clr"></div>
                                 </div>
                                 <br><br>
-                                <form class="contact-form">
+                                <form class="contact-form" action="{{URL::to('kontak')}}" method="post">
                                     <p class="form-group">
-                                        <input class="form-control" placeholder="Name" type="text">
+                                        <input class="form-control" placeholder="Name" name="namaKontak" type="text" required>
                                     </p>
                                     <p class="form-group">
-                                        <input class="form-control" placeholder="Email Address" type="text">
+                                        <input class="form-control" placeholder="Email Address" name="emailKontak" type="text" required>
                                     </p>
                                     <p class="form-group">
-                                        <input class="form-control" placeholder="Subject" type="text">
+                                        <textarea class="form-control" placeholder="Message" name="messageKontak" required></textarea>
                                     </p>
-                                    <p class="form-group">
-                                        <textarea class="form-control" placeholder="Message"></textarea>
-                                    </p>
-                                    <button class="btn-send">Send</button>
+                                    <button class="btn-send" type="submit">Send</button>
                                 </form>                                
                             </div>
                         </div> <!--.center_column-->
