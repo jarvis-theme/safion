@@ -4,7 +4,7 @@
             <ul class="slides">
             @foreach(slideshow() as $slide)
                 <li>
-                    {{HTML::image(slide_image_url($slide->gambar), 'slideshow banner', array('width'=>'1366','height'=>'663'))}}
+                    {{HTML::image(slide_image_url($slide->gambar), 'slideshow banner')}}
                 </li>
             @endforeach
             </ul>
