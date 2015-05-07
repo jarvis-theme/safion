@@ -108,9 +108,7 @@
                             {{price($produk->hargaJual)}}
                             </span>
                             <div class="img-rating">
-                                <iframe src="//www.facebook.com/plugins/share_button.php?href={{url(slugProduk($produk))}}&amp;layout=button" scrolling="no" frameborder="0" style="border:none; overflow:hidden;height:20px;width:70px;" allowTransparency="true"></iframe>
-                                <a class="twitter-share-button" href="https://twitter.com/share" data-count="none">Tweet </a>
-                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                                {{sosialShare(product_url($produk))}}
                             </div>
                             <div class="desc-prod">
                             	<p class="title">Deskripsi Produk</p>

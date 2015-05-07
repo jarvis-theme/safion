@@ -626,6 +626,9 @@ footer .copyright p {margin:0}
 	footer h4.title.active::after {
 		content: "";
 	}
+	.navbar-header {
+	 float: none;
+	}
 }
 
 @media screen and (max-width: 640px) {
@@ -639,3 +642,11 @@ footer .copyright p {margin:0}
 }
 
 #main-layout{padding-top: 40px !important; padding-bottom: 40px !important;}
+
+.fb-share-button{
+	margin-left: 20px;
+	margin-right: 15px;
+	position: relative;
+	top: -4px;
+}
+#fb-root{display: inline-block;}

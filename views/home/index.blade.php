@@ -26,7 +26,7 @@
                                 
                                 <div id="produk" class="new-content">
                                     <ul class="grid">
-                                        @foreach(list_product(8) as $produk)
+                                        @foreach(home_product() as $produk)
                                         <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
                                             <div class="prod-container">
                                                 <div class="image-container">
@@ -56,7 +56,7 @@
 
                                 <div id="new" class="new-content">
                                     <ul class="grid">
-                                        @foreach(new_product(8) as $produk)
+                                        @foreach(new_product() as $produk)
                                         <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
                                             <div class="prod-container">
                                                 <div class="image-container">
@@ -86,7 +86,7 @@
 
                                 <div id="best-seller" class="new-content">
                                     <ul class="grid">
-                                        @foreach(bestSeller(8) as $produk)
+                                        @foreach(bestSeller() as $produk)
                                         <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
                                             <div class="prod-container">
                                                 <div class="image-container">
@@ -123,7 +123,7 @@
                         <div id="brand-slide" class="owl-carousel owl-theme">
                             @foreach(list_koleksi() as $koleksi)
                                 <div class="item">
-                                    <a href="{{koleksi_url($koleksi)}}"><img class="img-responsive" src="{{koleksi_image_url($koleksi->gambar, 'original')}}" alt="brand" width="204" height="86" style="height:200px" /></a>
+                                    <a href="{{koleksi_url($koleksi)}}"><img class="img-responsive" src="{{koleksi_image_url($koleksi->gambar, 'original')}}" alt="brand" width="204" height="86" /></a>
                                 </div>
                             @endforeach
                         </div>

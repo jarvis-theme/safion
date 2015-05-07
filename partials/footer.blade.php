@@ -9,7 +9,7 @@
                                     <form class="newsletter-form" action="{{@$mailing->action}}" method="post" target="_blank" novalidate>
                                         <input type="text" value="" {{ @$mailing->action==''?'disabled="disabled"':'' }} placeholder="Enter your email" name="EMAIL" class="input-medium required email" id="newsletter mce-EMAIL"/>
                                         <div class="fr">
-                                            <button {{ @$mailing->action==''?'disabled="disabled"':'' }}>SUBSCRIBE</button>
+                                            <button type="submit" {{ @$mailing->action==''?'disabled="disabled"':'' }}>SUBSCRIBE</button>
                                         </div>
                                         <div class="clr"></div>
                                     </form>

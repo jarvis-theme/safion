@@ -54,13 +54,13 @@ Terjadi kesalahan dalam menyimpan data.<br>
                                     @endforeach
                                 </ul>
                                 <div class="btn-more">
-                                	<a href="{{URL::to('produk')}}">view more</a>
+                                	<a href="{{url('produk')}}">view more</a>
                                 </div>
                             </div>
                             <div id="advertising" class="block">
                             @foreach(vertical_banner() as $banner)    
                                 <div class="img-block">
-                                    <a href="{{URL::to($banner->url)}}">
+                                    <a href="{{url($banner->url)}}">
                                         {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
                                     </a>
                                 </div>
@@ -97,7 +97,7 @@ Terjadi kesalahan dalam menyimpan data.<br>
                     </div><!--.inner-column-->	
                     <div>
                     @foreach(horizontal_banner() as $banner)    
-                        <a href="{{URL::to($banner->url)}}">
+                        <a href="{{url($banner->url)}}">
                             {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
                         </a>
                     @endforeach 

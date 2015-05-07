@@ -1,9 +1,9 @@
-<div class="container">
-	<div id="breadcrumb">
-        <div class="">
-            Daftar member baru
-        </div>
+<div id="breadcrumb">
+    <div class="container">
+        Daftar member baru
     </div>
+</div>
+<div class="container" id="main-layout">
 	<div class="inner-column row">
         <div class="col-lg-3 col-xs-12 col-sm-4 pull-right">
             <div id="advertising" class="block">

@@ -58,11 +58,11 @@
             </div>
         </div><!--#left_sidebar-->
         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
-            @if( count(list_product(6, @$category)) > 0)
+            @if( count(list_product(null, @$category)) > 0)
             <div class="product-list">
                 <div class="row">
                     <ul class="grid">
-                        @foreach(list_product(16, @$category) as $myproduk)
+                        @foreach(list_product(null, @$category) as $myproduk)
                         <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
                             <div class="prod-container">
                                  <div class="image-container">
@@ -90,7 +90,7 @@
             </div><!--.product_list-->
             <div class="clr"></div>
             <div class="pagination">
-                {{list_product(6, @$category)->links()}}
+                {{list_product(null, @$category)->links()}}
             </div>
             @else
             <article style="font-style:italic; text-align:center;">
