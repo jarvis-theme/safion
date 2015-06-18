@@ -49,7 +49,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                         @foreach(category_menu() as $key=>$menu)
+                         @foreach(list_category() as $key=>$menu)
 
                             @if($menu->parent=='0')
                             <li class="dropdown">

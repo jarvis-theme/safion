@@ -23,7 +23,6 @@
                         </ul>
                         <div class="product-list">
                             <div class="row">
-                                
                                 <div id="produk" class="new-content">
                                     <ul class="grid">
                                         @foreach(home_product() as $produk)
@@ -34,13 +33,13 @@
                                                         {{HTML::image(product_image_url($produk->gambar1), 'produk', array('class'=>'img-responsive','style'=>'height:250px;width:auto;'))}}
                                                     </a>
                                                     @if(is_outstok($produk))
-                                                        <div class="icon-info icon-sold">Kosong</div>
-                                                    @endif
-                                                    @if(is_terlaris($produk))
+                                                    <div class="icon-info icon-sold">Kosong</div>
+                                                    @else
+                                                        @if(is_terlaris($produk))
                                                         <div class="icon-info icon-sale">Hot</div>
-                                                    @endif
-                                                    @if(is_produkbaru($produk))
+                                                        @elseif(is_produkbaru($produk))
                                                         <div class="icon-info icon-new">Baru</div>
+                                                        @endif
                                                     @endif
                                                 </div>
                                                 <h5 class="product-name">{{shortName($produk->nama,25)}}</h5>
@@ -64,13 +63,13 @@
                                                         {{HTML::image(product_image_url($produk->gambar1), 'produk', array('class'=>'img-responsive','style'=>'height:250px;width:auto;'))}}
                                                     </a>
                                                     @if(is_outstok($produk))
-                                                        <div class="icon-info icon-sold">Kosong</div>
-                                                    @endif
-                                                    @if(is_terlaris($produk))
+                                                    <div class="icon-info icon-sold">Kosong</div>
+                                                    @else
+                                                        @if(is_terlaris($produk))
                                                         <div class="icon-info icon-sale">Hot</div>
-                                                    @endif
-                                                    @if(is_produkbaru($produk))
+                                                        @elseif(is_produkbaru($produk))
                                                         <div class="icon-info icon-new">Baru</div>
+                                                        @endif
                                                     @endif
                                                 </div>
                                                 <h5 class="product-name">{{shortName($produk->nama,25)}}</h5>
@@ -86,7 +85,7 @@
 
                                 <div id="best-seller" class="new-content">
                                     <ul class="grid">
-                                        @foreach(bestSeller() as $produk)
+                                        @foreach(best_seller() as $produk)
                                         <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
                                             <div class="prod-container">
                                                 <div class="image-container">
@@ -94,13 +93,13 @@
                                                         {{HTML::image(product_image_url($produk->gambar1), 'produk', array('class'=>'img-responsive','style'=>'height:250px;width:auto;'))}}
                                                     </a>
                                                     @if(is_outstok($produk))
-                                                        <div class="icon-info icon-sold">Kosong</div>
-                                                    @endif
-                                                    @if(is_terlaris($produk))
+                                                    <div class="icon-info icon-sold">Kosong</div>
+                                                    @else
+                                                        @if(is_terlaris($produk))
                                                         <div class="icon-info icon-sale">Hot</div>
-                                                    @endif
-                                                    @if(is_produkbaru($produk))
+                                                        @elseif(is_produkbaru($produk))
                                                         <div class="icon-info icon-new">Baru</div>
+                                                        @endif
                                                     @endif
                                                 </div>
                                                 <h5 class="product-name">{{shortName($produk->nama,25)}}</h5>
@@ -113,7 +112,6 @@
                                     <div class="clr"></div>
                                     <a class="view-all" href="{{url('produk')}}">View All</a>
                                 </div><!--.women-content-->
-                                
                             </div><!--.row-->
                         </div><!--.product_list-->
                         <div class="clr"></div>
@@ -122,9 +120,11 @@
                     <div id="brand-carousel">
                         <div id="brand-slide" class="owl-carousel owl-theme">
                             @foreach(list_koleksi() as $koleksi)
-                                <div class="item">
-                                    <a href="{{koleksi_url($koleksi)}}"><img class="img-responsive" src="{{koleksi_image_url($koleksi->gambar, 'original')}}" alt="brand" width="204" height="86" /></a>
-                                </div>
+                            <div class="item">
+                                <a href="{{koleksi_url($koleksi)}}">
+                                    <img class="img-responsive" src="{{url(koleksi_image_url($koleksi->gambar,'medium'))}}" alt="brand" width="204" height="86" />
+                                </a>
+                            </div>
                             @endforeach
                         </div>
                     </div> <!--.p-carousel-->

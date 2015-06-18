@@ -6,9 +6,10 @@
 <div class="container" id="main-layout">
     <div class="inner-column row">
         <div id="left_sidebar" class="col-lg-3 col-xs-12 col-sm-4">
+            @if(count(list_category()) > 0)
             <div id="categories" class="block sidey">
             	<ul class="block-content nav">
-                @foreach(category_menu() as $side_menu)
+                @foreach(list_category() as $side_menu)
                     @if($side_menu->parent == '0')
                     <li>
                         <a href="{{category_url($side_menu)}}">{{$side_menu->nama}}<!-- <span class="arrow-right"></span> --></a>
@@ -18,6 +19,17 @@
                             @if($submenu->parent == $side_menu->id)
                             <li>
                                 <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
+                                @if($submenu->anak->count() != 0)
+                                <ul style="padding: 0px 20px;">
+                                    @foreach($side_menu->anak as $submenu2)
+                                    @if($submenu2->parent == $submenu->id)
+                                    <li>
+                                        <a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a>
+                                    </li>
+                                    @endif
+                                    @endforeach
+                                </ul>
+                                @endif
                             </li>
                             @endif
                             @endforeach
@@ -28,6 +40,7 @@
                 @endforeach
                 </ul>
             </div>
+            @endif
             <div id="best-seller" class="block">
             	<div class="title"><h2>Produk Terlaris</h2></div>
             	<ul class="block-content">
@@ -176,25 +189,25 @@
                     </div><!--.row-->
                 </div><!--.product-details-->
             </form>
-            @if(count(other_product($produk, 4)) > 0)
+            @if(count(other_product($produk)) > 0)
             <div id="related-product" class="product-list">
                 <h2 class="title">Related Product</h2>
                 <div class="row">
                     <ul class="grid">
-                        @foreach(other_product($produk, 5) as $produk_lain)
+                        @foreach(other_product($produk) as $produk_lain)
                          <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
                            <div class="image-container">
                                 <a href="{{product_url($produk)}}">
                                     {{HTML::image(product_image_url($produk_lain->gambar1), 'produk', array('class'=>'img-responsive','style'=>'height:200px;width:auto;'))}}
                                 </a>
-                                @if(is_outstok($produk_lain))
-                                    <div class="icon-info icon-sold">Kosong</div>
-                                @endif
-                                @if(is_terlaris($produk_lain))
+                                @if(is_outstok($produk))
+                                <div class="icon-info icon-sold">Kosong</div>
+                                @else
+                                    @if(is_terlaris($produk))
                                     <div class="icon-info icon-sale">Hot</div>
-                                @endif
-                                @if(is_produkbaru($produk_lain))
+                                    @elseif(is_produkbaru($produk))
                                     <div class="icon-info icon-new">Baru</div>
+                                    @endif
                                 @endif
                             </div>
                             <h5 class="product-name">{{$produk_lain->nama}}</h5>

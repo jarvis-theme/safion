@@ -27,6 +27,7 @@
     <div class="container" id="main-layout">
         <div class="inner-column row">
             <div id="left_sidebar" class="col-lg-3 col-xs-12 col-sm-4">
+                @if(count(category_menu()) > 0)
                 <div id="categories" class="block">
                     <ul class="block-content">
                     @foreach(category_menu() as $side_menu)
@@ -39,6 +40,17 @@
                                 @if($submenu->parent == $side_menu->id)
                                 <li>
                                     <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
+                                    @if($submenu->anak->count() != 0)
+                                    <ul style="padding: 0px 20px;">
+                                        @foreach($side_menu->anak as $submenu2)
+                                        @if($submenu2->parent == $submenu->id)
+                                        <li>
+                                            <a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a>
+                                        </li>
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                    @endif
                                 </li>
                                 @endif
                                 @endforeach
@@ -49,6 +61,7 @@
                     @endforeach
                     </ul>
                 </div>
+                @endif
                 <div id="latest-news" class="block">
                     <div class="title"><h2>Artikel Terbaru</h2></div>
                     <ul class="block-content">
@@ -64,7 +77,7 @@
                 <div id="advertising" class="block">
                     @foreach(vertical_banner() as $banners)
                     <div class="img-block">
-                        <a href="{{URL::to($banners->url)}}">
+                        <a href="{{url($banners->url)}}">
                             {{HTML::image(banner_image_url($banners->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
                         </a>
                     </div>
@@ -74,7 +87,7 @@
             <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
                 <div class="contact-us">
                     <div class="maps">
-                        @if($kontak->lat!='0' || $kontak->lat!='0')
+                        @if($kontak->lat!='0' || $kontak->lng!='0')
                             <iframe style="float:right;width:100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $kontak->lat.','.$kontak->lng }}&amp;aq=&amp;sll={{ $kontak->lat.','.$kontak->lng }}&amp;sspn=0.006849,0.009892&amp;ie=UTF8&amp;t=m&amp;z=14&amp;output=embed"></iframe><br />
                         @else
                             <iframe style="float:right;width:100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $kontak->alamat }}&amp;aq=0&amp;oq=gegerkalong+hil&amp;sspn=0.006849,0.009892&amp;ie=UTF8&amp;hq=&amp;hnear={{ $kontak->alamat }}&amp;t=m&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br />
@@ -88,7 +101,7 @@
                         <div class="clr"></div>
                     </div>
                     <br><br>
-                    <form class="contact-form" action="{{URL::to('kontak')}}" method="post">
+                    <form class="contact-form" action="{{url('kontak')}}" method="post">
                         <p class="form-group">
                             <input class="form-control" placeholder="Name" name="namaKontak" type="text" required>
                         </p>

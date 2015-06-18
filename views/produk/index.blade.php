@@ -6,9 +6,10 @@
 <div class="container" id="main-layout">
     <div class="inner-column row">
         <div id="left_sidebar" class="col-lg-3 col-xs-12 col-sm-4">
+            @if(count(list_category()) > 0)
             <div id="categories" class="block">
             	<ul class="block-content">
-                @foreach(category_menu() as $side_menu)
+                @foreach(list_category() as $side_menu)
                     @if($side_menu->parent == '0')
                     <li>
                         <a href="{{category_url($side_menu)}}">{{$side_menu->nama}}<!-- <span class="arrow-right"></span> --></a>
@@ -18,6 +19,17 @@
                             @if($submenu->parent == $side_menu->id)
                             <li>
                                 <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
+                                @if($submenu->anak->count() != 0)
+                                <ul style="padding: 0px 20px;">
+                                    @foreach($side_menu->anak as $submenu2)
+                                    @if($submenu2->parent == $submenu->id)
+                                    <li>
+                                        <a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a>
+                                    </li>
+                                    @endif
+                                    @endforeach
+                                </ul>
+                                @endif
                             </li>
                             @endif
                             @endforeach
@@ -28,6 +40,7 @@
                 @endforeach
                 </ul>
             </div>
+            @endif
             <div id="best-seller" class="block">
             	<div class="title"><h2>Produk Terlaris</h2></div>
             	<ul class="block-content">
@@ -69,14 +82,14 @@
                                     <a href="{{product_url($myproduk)}}">
                                         {{HTML::image(product_image_url($myproduk->gambar1), 'produk', array('class'=>'img-responsive','style'=>'height:200px;width:auto;'))}}
                                     </a>
-                                    @if(is_outstok($myproduk))
-                                        <div class="icon-info icon-sold">Kosong</div>
-                                    @endif
-                                    @if(is_terlaris($myproduk))
+                                    @if(is_outstok($produk))
+                                    <div class="icon-info icon-sold">Kosong</div>
+                                    @else
+                                        @if(is_terlaris($produk))
                                         <div class="icon-info icon-sale">Hot</div>
-                                    @endif
-                                    @if(is_produkbaru($myproduk))
+                                        @elseif(is_produkbaru($produk))
                                         <div class="icon-info icon-new">Baru</div>
+                                        @endif
                                     @endif
                                 </div>
                                 <h5 class="product-name">{{shortName($myproduk->nama,20)}}</h5>
@@ -100,11 +113,11 @@
         </div> <!--.center_column-->
     </div><!--.inner-column-->	
     <div>
-    @foreach(horizontal_banner() as $banner)    
-        <a href="{{URL::to($banner->url)}}">
+        @foreach(horizontal_banner() as $banner)    
+        <a href="{{url($banner->url)}}">
             {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive", "style"=>"height:200px"))}}
         </a>
-    @endforeach 
+        @endforeach 
     </div>
     <br>
 </div>

@@ -16,7 +16,7 @@
                             <div id="advertising" class="block">
                                 @foreach(vertical_banner() as $banners)
                             	<div class="img-block">
-                            		<a href="{{URL::to($banners->url)}}">
+                            		<a href="{{url($banners->url)}}">
                                         {{HTML::image(banner_image_url($banners->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
                                     </a>
                                 </div>

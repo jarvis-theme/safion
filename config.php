@@ -55,8 +55,8 @@ return array(
         'latest_product'=>4,
         'bestseller'=>4,
         'featured'=>4,
-        'blog'=>2,
-        'testimonial'=>2,    
+        'blog'=>5,
+        'testimonial'=>5,    
     ),
     'banner' => true,
     'themesColor' => array(

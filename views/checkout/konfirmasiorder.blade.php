@@ -51,20 +51,20 @@
 						</td>
 						<td class="quantity">
 							@if($checkouttype==1)
-							{{jadiRupiah($order->total)}}
+							{{price($order->total)}}
 							
 							@else 
 								@if($order->status < 2)
-									{{jadiRupiah($order->total)}}
+									{{price($order->total)}}
 								@elseif(($order->status > 1 && $order->status < 4) || $order->status==7)
-									{{jadiRupiah($order->total - $order->dp)}}
+									{{price($order->total - $order->dp)}}
 								@else
 									0
 								@endif
 							@endif
 						</td>
 						<td class="quantity">
-							{{($order->status==2 || $order->status==3) ? jadiRupiah(0) : ' - '.jadiRupiah($order->total)}}
+							{{($order->status==2 || $order->status==3) ? price(0) : ' - '.price($order->total)}}
 						</td>
 						<td class="sub-price">
 							{{ $order->noResi}}
@@ -74,19 +74,19 @@
 							@if($order->status==0)
 								<span class="label label-warning">Pending</span>
 							@elseif($order->status==1)
-								<span class="label label-important">Konfirmasi diterima</span>
+								<span class="label label-danger">Konfirmasi diterima</span>
 							@elseif($order->status==2)
 								<span class="label label-info">Pembayaran diterima</span>
 							@elseif($order->status==3)
-								<span class="label label-info">Terkirim</span>
+								<span class="label label-success">Terkirim</span>
 							@elseif($order->status==4)
-								<span class="label label-info">Batal</span>
+								<span class="label label-default">Batal</span>
 							@endif
 						@else 
 							@if($order->status==0)
 								<span class="label label-warning">Pending</span>
 							@elseif($order->status==1)
-								<span class="label label-important">Konfirmasi DP diterima</span>
+								<span class="label label-danger">Konfirmasi DP diterima</span>
 							@elseif($order->status==2)
 								<span class="label label-info">DP terbayar</span>
 							@elseif($order->status==3)
@@ -94,9 +94,9 @@
 							@elseif($order->status==4)
 								<span class="label label-info">Pembayaran lunas</span>
 							@elseif($order->status==5)
-								<span class="label label-info">Terkirim</span>
+								<span class="label label-success">Terkirim</span>
 							@elseif($order->status==6)
-								<span class="label label-info">Batal</span>
+								<span class="label label-default">Batal</span>
 							@elseif($order->status==7)
 								<span class="label label-info">Konfirmasi Pelunasan diterima</span>
 							@endif

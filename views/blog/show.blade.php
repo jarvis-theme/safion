@@ -23,7 +23,7 @@
                             <div id="advertising" class="block">
                             @foreach(vertical_banner() as $banner)
                             	<div class="img-block">
-                            		<a href="{{URL::to($banner->url)}}">
+                            		<a href="{{url($banner->url)}}">
                             			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
                         			</a>
                                 </div>
@@ -37,8 +37,11 @@
                                         <h1 class="title">{{$detailblog->judul}}</h1>
                                         <ul style="margin-bottom: 5px;">
                                             <span class="date-post"><i class="fa fa-calendar"></i> {{waktuTgl($detailblog->created_at)}}</span>&nbsp;&nbsp;
-                                            <span class="date-post"><i class="fa fa-tags"></i> <a href="{{URL::to('blog/category/'.Str::slug(@$detailblog->kategori->nama))}}">{{@$detailblog->kategori->nama}}</a></span>
+                                            @if(!empty($detailblog->kategori->nama))
+                                            <span class="date-post"><i class="fa fa-tags"></i> <a href="{{blog_category_url(@$detailblog->kategori)}}">{{@$detailblog->kategori->nama}}</a></span>
+                                            @endif
                                         </ul>
+                                        {{sosialShare(blog_url($detailblog))}}
                                         <p>{{$detailblog->isi}}</p>
                                     </div><!--entry-->
                                     <hr>

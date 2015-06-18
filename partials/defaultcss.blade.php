@@ -1,5 +1,5 @@
 	<!-- Default css-->
-	{{createFavicon($toko)}}
+	{{favicon()}}
 	{{generate_theme_css('safion/assets/css/reset.css')}}
 	{{generate_theme_css('safion/assets/css/bootstrap.css')}}
 	{{generate_theme_css('safion/assets/css/font-awesome.min.css')}}
