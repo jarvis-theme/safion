@@ -72,13 +72,13 @@ Terjadi kesalahan dalam menyimpan data.<br>
                         </div>
                     </div>
                     <div id="advertising" class="block">
-                    @foreach(vertical_banner() as $banner)    
+                        @foreach(vertical_banner() as $banner)    
                         <div class="img-block">
                             <a href="{{url($banner->url)}}">
                                 {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
                             </a>
                         </div>
-                    @endforeach 
+                        @endforeach 
                     </div>
                 </div><!--#left_sidebar-->
                 <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
@@ -110,11 +110,11 @@ Terjadi kesalahan dalam menyimpan data.<br>
                 </div>
             </div><!--.inner-column-->	
             <div>
-            @foreach(horizontal_banner() as $banner)    
+                @foreach(horizontal_banner() as $banner)    
                 <a href="{{url($banner->url)}}">
                     {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
                 </a>
-            @endforeach 
+                @endforeach 
             </div>
             <br>
         </div>

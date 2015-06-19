@@ -638,7 +638,9 @@ footer .copyright p {margin:0}
 	.product-list ul.grid li {width:100%; float:none}
 	.big-image img, .btm-details img {width:100%; height:auto}
 	.btm-details img {margin-bottom:20px}
-	
+}
+@media screen and (min-width: 1200px) {
+	.img-responsive { display: inline; width: 100%; }
 }
 
 #main-layout{padding-top: 40px !important; padding-bottom: 40px !important;}
