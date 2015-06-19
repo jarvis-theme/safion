@@ -168,9 +168,15 @@ nav#menu ul.navbar-nav li a {
 	text-transform:uppercase;
 	padding:0;
 }
+nav#menu ul.navbar-nav li ul li.submenu2 {
+	padding: 10px 30px !important;
+	margin: 0px 15px;
+}
+nav#menu ul.navbar-nav li ul li.submenu2 > a { padding: 0px !important; }
 nav#menu ul.navbar-nav li a:hover, nav#menu ul.navbar-nav li.active a,
 nav#menu ul.navbar-nav > .open > a { color:#212121; background:none}
 nav#menu ul.navbar-nav li ul li a{border:none; margin:0; padding:10px 20px; text-transform:none}
+nav#menu ul.navbar-nav li ul li ul li a{ padding: 0px; }
 nav#menu ul.navbar-nav li ul li a:hover {border:none}
 nav#menu ul.navbar-nav li ul li {background:none; padding:0 10px !important}
 nav#menu .navbar-form {margin-top: 15px;}
@@ -626,6 +632,9 @@ footer .copyright p {margin:0}
 	footer h4.title.active::after {
 		content: "";
 	}
+	.navbar-header {
+	 float: none;
+	}
 }
 
 @media screen and (max-width: 640px) {
@@ -635,7 +644,9 @@ footer .copyright p {margin:0}
 	.product-list ul.grid li {width:100%; float:none}
 	.big-image img, .btm-details img {width:100%; height:auto}
 	.btm-details img {margin-bottom:20px}
-	
+}
+@media screen and (min-width: 1200px) {
+	.img-responsive { display: inline; width: 100% !important; }
 }
 
 #main-layout{padding-top: 40px !important; padding-bottom: 40px !important;}

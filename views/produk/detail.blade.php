@@ -21,7 +21,7 @@
                                 <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
                                 @if($submenu->anak->count() != 0)
                                 <ul style="padding: 0px 20px;">
-                                    @foreach($side_menu->anak as $submenu2)
+                                    @foreach($submenu->anak as $submenu2)
                                     @if($submenu2->parent == $submenu->id)
                                     <li>
                                         <a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a>

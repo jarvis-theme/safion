@@ -16,10 +16,10 @@ Terjadi kesalahan dalam menyimpan data.<br>
         <div class="container">
         	<div class="inner-column row">
                 <div id="left_sidebar" class="col-lg-3 col-xs-12 col-sm-4">
-                    @if(count(category_menu()) > 0)
+                    @if(count(list_category()) > 0)
                     <div id="categories" class="block sidey">
                     	<ul class="block-content nav">
-                        @foreach(category_menu() as $side_menu)
+                        @foreach(list_category() as $side_menu)
                             @if($side_menu->parent == '0')
                             <li>
                                 <a href="{{category_url($side_menu)}}">{{$side_menu->nama}}<!-- <span class="arrow-right"></span> --></a>
@@ -31,7 +31,7 @@ Terjadi kesalahan dalam menyimpan data.<br>
                                         <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
                                         @if($submenu->anak->count() != 0)
                                         <ul style="padding: 0px 20px;">
-                                            @foreach($side_menu->anak as $submenu2)
+                                            @foreach($submenu->anak as $submenu2)
                                             @if($submenu2->parent == $submenu->id)
                                             <li>
                                                 <a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a>
@@ -104,7 +104,7 @@ Terjadi kesalahan dalam menyimpan data.<br>
                             <p class="form-group">
                                 <textarea class="form-control" placeholder="Pesan" name="testimonial" required></textarea>
                             </p>
-                            <button class="btn-send" type="submit">Kirim</button>
+                            <button class="btn btn-success" type="submit">Kirim</button>
                         </form>
                     </div>
                 </div>

@@ -25,7 +25,7 @@
                         <p class="form-group">
                         	<input class="form-control" placeholder="Kode Order" type="text" required>
                     	</p>
-                        <button class="btn-send">Cari Kode</button>
+                        <button class="btn btn-success">Cari Kode</button>
                     {{Form::close()}}
 	            </div>
 	        </div>

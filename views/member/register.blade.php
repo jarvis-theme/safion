@@ -7,13 +7,13 @@
 	<div class="inner-column row">
         <div class="col-lg-3 col-xs-12 col-sm-4 pull-right">
             <div id="advertising" class="block">
-            @foreach(vertical_banner() as $banner)
+            	@foreach(vertical_banner() as $banner)
             	<div class="img-block">
-            		<a href="{{URL::to($banner->url)}}">
+            		<a href="{{url($banner->url)}}">
             			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
         			</a>
                 </div>
-            @endforeach
+            	@endforeach
             </div>
             <br>
         </div>
@@ -91,14 +91,14 @@
 					<div class="col-lg-offset-2 col-lg-10">
 						<div class="checkbox">
 							<label>
-								<input name='readme' value="1" type="checkbox"> Saya telah membaca dan menyetujui <a href="{{URL::to('service')}}" target="_blank" >Privacy Policy</a>
+								<input name='readme' value="1" type="checkbox"> Saya telah membaca dan menyetujui <a href="{{url('service')}}" target="_blank" >Privacy Policy</a>
 							</label>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
-						<button type="submit" class="btn btn-green">Register</button>
+						<button type="submit" class="btn btn-success">Register</button>
 						<button type="reset" class="btn btn-default">Reset</button>
 					</div>
 				</div>

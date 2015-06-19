@@ -15,13 +15,13 @@
                         <a href="{{category_url($side_menu)}}">{{$side_menu->nama}}<!-- <span class="arrow-right"></span> --></a>
                         @if($side_menu->anak->count() != 0)
                         <ul style="padding: 0px 20px;">
-                            @foreach($side_menu->anak as $submenu)
+                            @foreach(list_category() as $submenu)
                             @if($submenu->parent == $side_menu->id)
                             <li>
                                 <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
                                 @if($submenu->anak->count() != 0)
                                 <ul style="padding: 0px 20px;">
-                                    @foreach($side_menu->anak as $submenu2)
+                                    @foreach($submenu->anak as $submenu2)
                                     @if($submenu2->parent == $submenu->id)
                                     <li>
                                         <a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a>
@@ -115,7 +115,7 @@
     <div>
         @foreach(horizontal_banner() as $banner)    
         <a href="{{url($banner->url)}}">
-            {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive", "style"=>"height:200px"))}}
+            {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
         </a>
         @endforeach 
     </div>

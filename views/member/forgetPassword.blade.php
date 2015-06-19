@@ -36,9 +36,9 @@
             <h2>Lupa Password</h2><hr><br>
             <div class="input-group">
                 <form class="form-horizontal" action="{{url('member/forgetpassword')}}" method="post">
-                    <input type="text" class="form-control" placeholder="Email" required>
+                    <input type="text" class="form-control" placeholder="Email" name='recoveryEmail' required>
                     <span class="input-group-btn">
-                        <button class="btn btn-green" type="button">Reset Password</button>
+                        <button class="btn btn-danger" type="submit">Reset Password</button>
                     </span>
                 </form>
             </div>
@@ -49,7 +49,7 @@
             <p>Nikmati kemudahan berbelanja dengan mendaftar sebagai member.</p>
             <div class="input-group">
                 <span class="input-group-btn">
-                    <a href="{{url('member/create')}}" class="btn btn-red">Daftar</a>
+                    <a href="{{url('member/create')}}" class="btn btn-info">Daftar</a>
                 </span>
             </div>
         </div>

@@ -27,7 +27,7 @@
 				</div>
 				<div class="form-group">
 					<div class="pull-left col-sm-2">
-						<button type="submit" class="btn btn-green">Log in</button>
+						<button type="submit" class="btn btn-success">Log in</button>
 						<!-- <input type="submit" value="Login" class="button"> -->
 					</div>
 					<div class="pull-right col-sm-4">

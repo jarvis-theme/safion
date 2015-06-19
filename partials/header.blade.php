@@ -63,7 +63,18 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     @foreach($menu->anak as $key => $submenu)
-                                        <li><a href="{{category_url($submenu)}}">{{$submenu->nama}}</a></li>
+                                    <li><a href="{{category_url($submenu)}}">{{$submenu->nama}}</a></li>
+                                        @if(count($submenu->anak->count()) > 0)
+                                        <ul>
+                                            @foreach($submenu->anak as $submenu2)
+                                                @if($submenu2->parent == $submenu->id)
+                                                <li class="submenu2">
+                                                    <a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a>
+                                                </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                        @endif
                                     @endforeach
                                 </ul>
                                 @endif
