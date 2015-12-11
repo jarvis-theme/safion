@@ -1,47 +1,21 @@
-@if(Session::has('errorlogin'))
-<div class="error" id='message' style='display:none'>
-    <p>Maaf, email atau password anda salah.</p>
-</div>
-@endif
-@if(Session::has('error'))
-<div class="error" id='message' style='display:none'>
-    {{Session::get('error')}}!!!
-</div>
-@endif
-@if(Session::has('errorrecovery'))
-<div class="error" id='message' style='display:none'>
-    <p>Maaf, email anda tidak ditemukan.</p>
-</div>
-@endif
-@if(Session::has('forget'))
-<div class="success" id='message' style='display:none'>
-    <p>Cek email untuk me-reset password anda!</p>
-</div>  
-@endif
-@if(Session::has('error'))
-<div class="error" id='message' style='display:none'>
-    <p>{{Session::get('error')}}</p>
-</div>  
-@endif
-
-<div class="container">
-    <div id="breadcrumb">
-        <div class="container">
-            Member Area
-        </div>
+<div id="breadcrumb">
+    <div class="container">
+        Member Area
     </div>
+</div>
+<div class="container">
     <hr>
     <div class="inner-column row">
         <div id="center_column" class="col-lg-6 col-xs-12 col-sm-5">
             <h2>Lupa Password</h2><hr><br>
-            <div class="input-group">
-                <form class="form-horizontal" action="{{url('member/forgetpassword')}}" method="post">
-                    <input type="text" class="form-control" placeholder="Email" name='recoveryEmail' required>
+            <form class="form-horizontal" action="{{url('member/forgetpassword')}}" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Masukkan email anda" name='recoveryEmail' required>
                     <span class="input-group-btn">
                         <button class="btn btn-danger" type="submit">Reset Password</button>
                     </span>
-                </form>
-            </div>
+                </div>
+            </form>
             <br><br>
         </div>
         <div id="center_column" class="col-lg-5 col-md-offset-1">

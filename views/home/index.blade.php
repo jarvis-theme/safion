@@ -30,16 +30,14 @@
                                             <div class="prod-container">
                                                 <div class="image-container">
                                                     <a href="{{product_url($produk)}}">
-                                                        {{HTML::image(product_image_url($produk->gambar1), 'produk', array('class'=>'img-responsive','style'=>'height:250px;width:auto;'))}}
+                                                        {{HTML::image(product_image_url($produk->gambar1,'medium'), 'produk', array('class'=>'img-responsive'))}}
                                                     </a>
                                                     @if(is_outstok($produk))
                                                     <div class="icon-info icon-sold">Kosong</div>
-                                                    @else
-                                                        @if(is_terlaris($produk))
-                                                        <div class="icon-info icon-sale">Hot</div>
-                                                        @elseif(is_produkbaru($produk))
-                                                        <div class="icon-info icon-new">Baru</div>
-                                                        @endif
+                                                    @elseif(is_terlaris($produk))
+                                                    <div class="icon-info icon-sale">Hot</div>
+                                                    @elseif(is_produkbaru($produk))
+                                                    <div class="icon-info icon-new">Baru</div>
                                                     @endif
                                                 </div>
                                                 <h5 class="product-name">{{shortName($produk->nama,25)}}</h5>
@@ -60,16 +58,14 @@
                                             <div class="prod-container">
                                                 <div class="image-container">
                                                     <a href="{{product_url($produk)}}">
-                                                        {{HTML::image(product_image_url($produk->gambar1), 'produk', array('class'=>'img-responsive','style'=>'height:250px;width:auto;'))}}
+                                                        {{HTML::image(product_image_url($produk->gambar1,'medium'), 'produk', array('class'=>'img-responsive'))}}
                                                     </a>
                                                     @if(is_outstok($produk))
                                                     <div class="icon-info icon-sold">Kosong</div>
-                                                    @else
-                                                        @if(is_terlaris($produk))
-                                                        <div class="icon-info icon-sale">Hot</div>
-                                                        @elseif(is_produkbaru($produk))
-                                                        <div class="icon-info icon-new">Baru</div>
-                                                        @endif
+                                                    @elseif(is_terlaris($produk))
+                                                    <div class="icon-info icon-sale">Hot</div>
+                                                    @elseif(is_produkbaru($produk))
+                                                    <div class="icon-info icon-new">Baru</div>
                                                     @endif
                                                 </div>
                                                 <h5 class="product-name">{{shortName($produk->nama,25)}}</h5>
@@ -90,16 +86,14 @@
                                             <div class="prod-container">
                                                 <div class="image-container">
                                                     <a href="{{product_url($produk)}}">
-                                                        {{HTML::image(product_image_url($produk->gambar1), 'produk', array('class'=>'img-responsive','style'=>'height:250px;width:auto;'))}}
+                                                        {{HTML::image(product_image_url($produk->gambar1,'medium'), 'produk', array('class'=>'img-responsive'))}}
                                                     </a>
                                                     @if(is_outstok($produk))
                                                     <div class="icon-info icon-sold">Kosong</div>
-                                                    @else
-                                                        @if(is_terlaris($produk))
-                                                        <div class="icon-info icon-sale">Hot</div>
-                                                        @elseif(is_produkbaru($produk))
-                                                        <div class="icon-info icon-new">Baru</div>
-                                                        @endif
+                                                    @elseif(is_terlaris($produk))
+                                                    <div class="icon-info icon-sale">Hot</div>
+                                                    @elseif(is_produkbaru($produk))
+                                                    <div class="icon-info icon-new">Baru</div>
                                                     @endif
                                                 </div>
                                                 <h5 class="product-name">{{shortName($produk->nama,25)}}</h5>

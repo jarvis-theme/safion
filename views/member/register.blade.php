@@ -10,7 +10,7 @@
             	@foreach(vertical_banner() as $banner)
             	<div class="img-block">
             		<a href="{{url($banner->url)}}">
-            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
+            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('class'=>'img-responsive'))}}
         			</a>
                 </div>
             	@endforeach
@@ -53,13 +53,13 @@
 				<div class="form-group">
 					<label for="dropdown" class="col-lg-2">Provinsi</label>
 					<div class="col-lg-10">
-						{{Form::select('provinsi',array('' => '-- Pilih Provinsi --'), Input::old("provinsi"),array('required', 'id="provinsi" data-rel="chosen" class="form-control"'))}}
+						{{Form::select('provinsi',array('' => '-- Pilih Provinsi --') + $provinsi, Input::old("provinsi"),array('required', 'id="provinsi" data-rel="chosen" class="form-control"'))}}
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="dropdown" class="col-lg-2">Kota</label>
 					<div class="col-lg-10">
-						{{Form::select('kota',array('' => '-- Pilih Kota --'), Input::old("kota"),array('required', 'id="kota" data-rel="chosen" class="form-control"'))}}
+						{{Form::select('kota',array('' => '-- Pilih Kota --') + $kota, Input::old("kota"),array('required', 'id="kota" data-rel="chosen" class="form-control"'))}}
 					</div>
 				</div>
 				<div class="form-group">

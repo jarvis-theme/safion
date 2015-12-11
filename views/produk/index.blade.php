@@ -1,6 +1,8 @@
 <section id="breadcrumb">
     <div class="container">
-        Home {{$breadcrumb}}
+        <a href="{{url('home')}}">Home</a>
+        <span>/</span>
+        <a href="{{url('produk')}}">Produk</a>
     </div>
 </section>
 <div class="container" id="main-layout">
@@ -48,7 +50,7 @@
                     <li>
                     	<a href="{{product_url($best)}}">
                         	<div class="img-block">
-                                {{HTML::image(product_image_url($best->gambar1),'produk',array('width'=>'81','height'=>'64'))}}
+                                {{HTML::image(product_image_url($best->gambar1,'thumb'),'produk',array('width'=>'81','height'=>'64'))}}
                             </div>
                             <p class="product-name">{{$best->nama}}</p>
                             <p class="price">{{price($best->hargaJual)}}</p>
@@ -80,16 +82,14 @@
                             <div class="prod-container">
                                  <div class="image-container">
                                     <a href="{{product_url($myproduk)}}">
-                                        {{HTML::image(product_image_url($myproduk->gambar1), 'produk', array('class'=>'img-responsive','style'=>'height:200px;width:auto;'))}}
+                                        {{HTML::image(product_image_url($myproduk->gambar1,'medium'), 'produk', array('class'=>'img-responsive'))}}
                                     </a>
                                     @if(is_outstok($myproduk))
                                     <div class="icon-info icon-sold">Kosong</div>
-                                    @else
-                                        @if(is_terlaris($myproduk))
-                                        <div class="icon-info icon-sale">Hot</div>
-                                        @elseif(is_produkbaru($myproduk))
-                                        <div class="icon-info icon-new">Baru</div>
-                                        @endif
+                                    @elseif(is_terlaris($myproduk))
+                                    <div class="icon-info icon-sale">Hot</div>
+                                    @elseif(is_produkbaru($myproduk))
+                                    <div class="icon-info icon-new">Baru</div>
                                     @endif
                                 </div>
                                 <h5 class="product-name">{{shortName($myproduk->nama,20)}}</h5>

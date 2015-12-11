@@ -1,18 +1,3 @@
-@if(Session::has('msg'))
-<div class="success" id='message' style='display:none'>
-  <p>Terima kasih, testimonial anda sudah terkirim.</p>
-</div>
-@endif
-@if($errors->all())
-<div class="error" id='message' style='display:none'>
-Terjadi kesalahan dalam menyimpan data.<br>
-    <ul>
-    @foreach($errors->all() as $message)
-        <li>{{ $message }}</li>
-    @endforeach
-    </ul>
-</div>
-@endif
         <div class="container">
         	<div class="inner-column row">
                 <div id="left_sidebar" class="col-lg-3 col-xs-12 col-sm-4">
@@ -53,13 +38,13 @@ Terjadi kesalahan dalam menyimpan data.<br>
                     @endif
 
                     <div id="best-seller" class="block">
-                    	<div class="title"><h2>Best Sellling</h2></div>
+                    	<div class="title"><h2>Produk Terlaris</h2></div>
                     	<ul class="block-content">
                             @foreach(best_seller() as $best)
                             <li>
                             	<a href="{{product_url($best)}}">
                                 	<div class="img-block">
-                                        {{HTML::image(product_image_url($best->gambar1),'produk',array('width'=>'81','height'=>'64'))}}
+                                        {{HTML::image(product_image_url($best->gambar1,'thumb'),'produk',array('width'=>'81','height'=>'64'))}}
                                     </div>
                                     <p class="product-name">{{$best->nama}}</p>
                                     <p class="price">{{price($best->hargaJual)}}</p>

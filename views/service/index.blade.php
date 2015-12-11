@@ -26,7 +26,7 @@
                         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
                             <div class="product-list">
                             	<div class="entry">
-                                    <h2 class="title">Customer Service</h2>
+                                    <!-- <h2 class="title">Customer Service</h2> -->
                                 </div>
                             	<div class="row">
                                     <article class="col-lg-12 col-md-12 col-xs-12">

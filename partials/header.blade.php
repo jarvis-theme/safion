@@ -2,7 +2,7 @@
     <div id="top-head">
         <div class="container">
             <div class="top-tel fl">
-                <i class="fa fa-phone"></i> <a style="color:#fff;" href="tel:{{$kontak->telepon}}">Call : {{@$kontak->telepon ? $kontak->telepon.'&nbsp;&nbsp;' : '-&nbsp;&nbsp;'}}</a>
+                <i class="fa fa-phone"></i> <a style="color:#fff;">Call : {{@$kontak->telepon ? $kontak->telepon.'&nbsp;&nbsp;' : '-&nbsp;&nbsp;'}}</a>
             </div>
             <div class="top-links fr">
                 <ul>
@@ -15,6 +15,7 @@
                     <li class="shopping-cart" id="shoppingcartplace">
                         <a href="{{url('checkout')}}">{{shopping_cart()}}</a>
                     </li>
+                    
                 </ul>
             </div>
             <div class="clr"></div>
@@ -49,7 +50,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                         @foreach(list_category() as $key=>$menu)
+                        @foreach(list_category() as $key=>$menu)
 
                             @if($menu->parent=='0')
                             <li class="dropdown">

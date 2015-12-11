@@ -1,6 +1,6 @@
 <section id="breadcrumb">
     <div class="container">
-        Home {{breadcrumbProduk($produk,'; <span>/</span> ',';',true)}}
+        {{breadcrumbProduk($produk,'; <span>/</span> ',';',true)}}
     </div>
 </section>
 <div class="container" id="main-layout">
@@ -48,7 +48,7 @@
                     <li>
                     	<a href="{{product_url($best)}}">
                         	<div class="img-block">
-                                {{HTML::image(product_image_url($best->gambar1),'produk',array('width'=>'81','height'=>'64'))}}
+                                {{HTML::image(product_image_url($best->gambar1,'thumb'),'produk',array('width'=>'81','height'=>'64'))}}
                             </div>
                             <p class="product-name">{{$best->nama}}</p>
                             <p class="price">{{price($best->hargaJual)}}</p> 
@@ -66,7 +66,7 @@
             		<a href="{{url($banners->url)}}">
                         {{HTML::image(banner_image_url($banners->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
                     </a>
-                </div>
+                </div><br>
                 @endforeach
             </div>
         </div><!--#left_sidebar-->
@@ -76,35 +76,35 @@
                 	<div class="row">
                     	<div id="prod-left" class="col-lg-6 col-xs-12 col-sm-6">
                         	<div class="big-image">
-                                {{HTML::image(product_image_url($produk->gambar1),'produk',array('width'=>'419','height'=>'563'))}}
-                                <a class="zoom fancybox" href="{{product_image_url($produk->gambar1)}}" title="{{$produk->nama}}">&nbsp;</a>
+                                {{HTML::image(product_image_url($produk->gambar1,'large'),'produk',array('width'=>'419','height'=>'563'))}}
+                                <a class="zoom fancybox" href="{{product_image_url($produk->gambar1,'large')}}" title="{{$produk->nama}}">&nbsp;</a>
                             </div>
                             <div id="thumb-view">
                             	<ul id="thumb-list" class="owl-carousel owl-theme">
                                     @if($produk->gambar1 != '')
                                     <li class="item">
-                                        <a class="zoom fancybox" href="{{product_image_url($produk->gambar1)}}" title="{{$produk->nama}}">
+                                        <a class="zoom fancybox" href="{{product_image_url($produk->gambar1,'large')}}" title="{{$produk->nama}}">
                                         {{HTML::image(product_image_url($produk->gambar1,'medium'),'gambar1',array('width'=>'130', 'height'=>'174'))}}
                                         </a>
                                     </li>
                                     @endif
                                     @if($produk->gambar2 != '')
                                     <li class="item">
-                                        <a class="zoom fancybox" href="{{product_image_url($produk->gambar2)}}" title="{{$produk->nama}}">
+                                        <a class="zoom fancybox" href="{{product_image_url($produk->gambar2,'large')}}" title="{{$produk->nama}}">
                                         {{HTML::image(product_image_url($produk->gambar2,'medium'),'gambar2',array('width'=>'130', 'height'=>'174'))}}
                                         </a>
                                     </li>
                                     @endif
                                     @if($produk->gambar3 != '')
                                     <li class="item">
-                                        <a class="zoom fancybox" href="{{product_image_url($produk->gambar3)}}" title="{{$produk->nama}}">
+                                        <a class="zoom fancybox" href="{{product_image_url($produk->gambar3,'large')}}" title="{{$produk->nama}}">
                                         {{HTML::image(product_image_url($produk->gambar3,'medium'),'gambar3',array('width'=>'130', 'height'=>'174'))}}
                                         </a>
                                     </li>
                                     @endif
                                     @if($produk->gambar4 != '')
                                     <li class="item">
-                                        <a class="zoom fancybox" href="{{product_image_url($produk->gambar4)}}" title="{{$produk->nama}}">
+                                        <a class="zoom fancybox" href="{{product_image_url($produk->gambar4,'large')}}" title="{{$produk->nama}}">
                                         {{HTML::image(product_image_url($produk->gambar4,'medium'),'gambar4',array('width'=>'130', 'height'=>'174'))}}
                                         </a>
                                     </li>
@@ -165,19 +165,6 @@
                                         </div>
                                     </div>
                                 </fieldset>
-                                <div>
-                                    @foreach(list_banks() as $banks)    
-                                        {{HTML::image(bank_logo($banks),'bank')}}
-                                    @endforeach 
-                                    @foreach(list_payments() as $pay)
-                                        @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
-                                        <img src="{{url('img/bank/ipaymu.jpg')}}" alt="ipaymu" />
-                                        @endif
-                                    @endforeach
-                                    @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
-                                    <img src="{{url('img/bank/doku.jpg')}}" alt="doku myshortcart" />
-                                    @endif                                    
-                                </div>
                             </div>
                             <div class="clr"></div>
                             <div class="btm-details">
@@ -197,17 +184,15 @@
                         @foreach(other_product($produk) as $produk_lain)
                          <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
                            <div class="image-container">
-                                <a href="{{product_url($produk)}}">
-                                    {{HTML::image(product_image_url($produk_lain->gambar1), 'produk', array('class'=>'img-responsive','style'=>'height:200px;width:auto;'))}}
+                                <a href="{{product_url($produk_lain)}}">
+                                    {{HTML::image(product_image_url($produk_lain->gambar1,'medium'), 'produk', array('class'=>'img-responsive','style'=>'height:200px;width:auto;'))}}
                                 </a>
                                 @if(is_outstok($produk_lain))
                                 <div class="icon-info icon-sold">Kosong</div>
-                                @else
-                                    @if(is_terlaris($produk_lain))
-                                    <div class="icon-info icon-sale">Hot</div>
-                                    @elseif(is_produkbaru($produk_lain))
-                                    <div class="icon-info icon-new">Baru</div>
-                                    @endif
+                                @elseif(is_terlaris($produk_lain))
+                                <div class="icon-info icon-sale">Hot</div>
+                                @elseif(is_produkbaru($produk_lain))
+                                <div class="icon-info icon-new">Baru</div>
                                 @endif
                             </div>
                             <h5 class="product-name">{{$produk_lain->nama}}</h5>
