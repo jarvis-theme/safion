@@ -1,16 +1,8 @@
-define(['jquery','bootstrap','noty'], function($)
+define(['jquery','bootstrap'], function($)
 {
     return new function(){
         var self = this;
         self.run = function(){
-            // tampilkan error noty
-            var msg = $('#message');
-            if(msg.length){
-                type = $(msg).attr('class');
-                text = $(msg).html();
-                noty({"text":text,"layout":"top","type":type});    
-            }
-
             // BACK TO TOP
             $('.back-top').click(function(e) { 
                 $('body, html').animate({scrollTop:$('header').offset().top}, 1000); 

@@ -14,13 +14,13 @@
                     <li>
                         <a href="{{category_url($side_menu)}}">{{$side_menu->nama}}<!-- <span class="arrow-right"></span> --></a>
                         @if($side_menu->anak->count() != 0)
-                        <ul style="padding: 0px 20px;">
+                        <ul class="sidenav">
                             @foreach($side_menu->anak as $submenu)
                             @if($submenu->parent == $side_menu->id)
                             <li>
                                 <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
                                 @if($submenu->anak->count() != 0)
-                                <ul style="padding: 0px 20px;">
+                                <ul class="sidenav">
                                     @foreach($submenu->anak as $submenu2)
                                     @if($submenu2->parent == $submenu->id)
                                     <li>
@@ -46,8 +46,8 @@
                 <ul class="block-content">
                     @foreach(list_blog(2) as $artikel)
                     <li>
-                        <h5 class="title-news" style="margin-bottom: 5px;">{{short_description($artikel->judul, 28)}}</h5>
-                        <p>{{short_description($artikel->isi, 150)}} <a class="read-more" href="{{blog_url($artikel)}}">Read More</a></p>
+                        <h5 class="title-news" id="news">{{short_description($artikel->judul, 28)}}</h5>
+                        <p>{{short_description($artikel->isi, 150)}} <a class="read-more" href="{{blog_url($artikel)}}">Selengkapnya</a></p>
                         <span class="date-post"><i class="fa fa-calendar"></i> {{date("d F Y", strtotime($artikel->created_at))}}</span>
                     </li>
                     @endforeach
@@ -57,23 +57,23 @@
                 @foreach(vertical_banner() as $banners)
                 <div class="img-block">
                     <a href="{{url($banners->url)}}">
-                        {{HTML::image(banner_image_url($banners->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
+                        {{HTML::image(banner_image_url($banners->gambar),'Info Promo',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
                     </a>
                 </div>
                 @endforeach
             </div>
-        </div><!--#left_sidebar-->
+        </div>
         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
             <div class="contact-us">
                 <div class="maps">
                     @if($kontak->lat!='0' || $kontak->lng!='0')
-                        <iframe style="float:right;width:100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $kontak->lat.','.$kontak->lng }}&amp;aq=&amp;sll={{ $kontak->lat.','.$kontak->lng }}&amp;sspn=0.006849,0.009892&amp;ie=UTF8&amp;t=m&amp;z=14&amp;output=embed"></iframe><br />
+                        <iframe class="maplocation" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $kontak->lat.','.$kontak->lng }}&amp;aq=&amp;sll={{ $kontak->lat.','.$kontak->lng }}&amp;sspn={{ $kontak->lat.','.$kontak->lng }}&amp;ie=UTF8&amp;t=m&amp;z=14&amp;output=embed"></iframe><br />
                     @else
-                        <iframe style="float:right;width:100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $kontak->alamat }}&amp;aq=0&amp;oq=gegerkalong+hil&amp;sspn=0.006849,0.009892&amp;ie=UTF8&amp;hq=&amp;hnear={{ $kontak->alamat }}&amp;t=m&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br />
+                        <iframe class="maplocation" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $kontak->alamat }}&amp;aq=0&amp;oq={{ $kontak->alamat }}&amp;sspn={{ $kontak->lat.','.$kontak->lng }}&amp;ie=UTF8&amp;hq=&amp;hnear={{ $kontak->alamat }}&amp;t=m&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br />
                     @endif
                 </div>
                 <div class="contact-desc">
-                    <p><strong>Shop Address :</strong> {{$kontak->alamat}}</p>
+                    <p><strong>Alamat :</strong> {{$kontak->alamat}}</p>
                     <span><i class="phone"></i> {{$kontak->telepon ? $kontak->telepon : ' - '}}</span>
                     <span><i class="bbm"></i> {{$kontak->bb ? $kontak->bb : '&nbsp;&nbsp;-&nbsp;'}}</span>
                     <span><i class="mail"></i> {{$kontak->email}}</span>

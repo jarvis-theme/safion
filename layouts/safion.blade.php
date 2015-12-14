@@ -12,7 +12,7 @@
 
         {{ Theme::asset()->styles() }}  
         <noscript>
-            {{generate_theme_css('safhion/assets/css/nojs.css')}}
+            {{generate_theme_css('safion/assets/css/nojs.css')}}
         </noscript>
     </head>
     <body> 
@@ -27,8 +27,6 @@
             {{ Theme::partial('footer') }}  
         </div>
         {{ Theme::partial('defaultjs') }}   
-        {{-- Theme::asset()->scripts() --}}
-        {{-- Theme::asset()->container('footer')->scripts() --}}
         {{ Theme::partial('analytic') }}    
     </body>
 </html>

@@ -14,13 +14,13 @@
                     <li>
                         <a href="{{category_url($side_menu)}}">{{$side_menu->nama}}<!-- <span class="arrow-right"></span> --></a>
                         @if($side_menu->anak->count() != 0)
-                        <ul style="padding: 0px 20px;">
+                        <ul class="sidenav">
                             @foreach($side_menu->anak as $submenu)
                             @if($submenu->parent == $side_menu->id)
                             <li>
                                 <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
                                 @if($submenu->anak->count() != 0)
-                                <ul style="padding: 0px 20px;">
+                                <ul class="sidenav">
                                     @foreach($submenu->anak as $submenu2)
                                     @if($submenu2->parent == $submenu->id)
                                     <li>
@@ -48,9 +48,9 @@
                     <li>
                     	<a href="{{product_url($best)}}">
                         	<div class="img-block">
-                                {{HTML::image(product_image_url($best->gambar1,'thumb'),'produk',array('width'=>'81','height'=>'64'))}}
+                                {{HTML::image(product_image_url($best->gambar1,'thumb'), $best->nama,array('width'=>'81','height'=>'64'))}}
                             </div>
-                            <p class="product-name">{{$best->nama}}</p>
+                            <p class="product-name">{{short_description($best->nama,35)}}</p>
                             <p class="price">{{price($best->hargaJual)}}</p> 
                         </a>
                     </li>
@@ -64,19 +64,19 @@
                 @foreach(vertical_banner() as $key => $banners)
                 <div class="img-block">
             		<a href="{{url($banners->url)}}">
-                        {{HTML::image(banner_image_url($banners->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
+                        {{HTML::image(banner_image_url($banners->gambar),'Info Promo',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
                     </a>
                 </div><br>
                 @endforeach
             </div>
-        </div><!--#left_sidebar-->
+        </div>
         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
             <form action="#" id="addorder">
             	<div class="product-details">
                 	<div class="row">
                     	<div id="prod-left" class="col-lg-6 col-xs-12 col-sm-6">
                         	<div class="big-image">
-                                {{HTML::image(product_image_url($produk->gambar1,'large'),'produk',array('width'=>'419','height'=>'563'))}}
+                                {{HTML::image(product_image_url($produk->gambar1,'large'), $produk->nama,array('width'=>'419','height'=>'563'))}}
                                 <a class="zoom fancybox" href="{{product_image_url($produk->gambar1,'large')}}" title="{{$produk->nama}}">&nbsp;</a>
                             </div>
                             <div id="thumb-view">
@@ -130,9 +130,9 @@
                             </div>
                             <div class="avail-info">
                                 @if($produk->stok > 0)
-                            	<i class="instock" style="color:#5cb85c; margin-right:5px;"></i><span>Tersedia, Stok {{$produk->stok}} item</span>
+                            	<i class="instock" id="stock"></i><span>Tersedia, Stok {{$produk->stok}} item</span>
                                 @else
-                                <i class="fa fa-times" style="color:#d9534f; margin-right:5px;"></i><span>Habis</span>
+                                <i class="fa fa-times" id="empty-stock"></i><span>Habis</span>
                                 @endif
                             </div>
                             <div class="attribute">
@@ -173,8 +173,8 @@
                             </div>
                         </div>
                         <div class="clr"></div>
-                    </div><!--.row-->
-                </div><!--.product-details-->
+                    </div>
+                </div>
             </form>
             @if(count(other_product($produk)) > 0)
             <div id="related-product" class="product-list">
@@ -185,7 +185,7 @@
                          <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
                            <div class="image-container">
                                 <a href="{{product_url($produk_lain)}}">
-                                    {{HTML::image(product_image_url($produk_lain->gambar1,'medium'), 'produk', array('class'=>'img-responsive','style'=>'height:200px;width:auto;'))}}
+                                    {{HTML::image(product_image_url($produk_lain->gambar1,'medium'), $produk_lain->nama, array('class'=>'img-responsive','style'=>'height:200px;width:auto;'))}}
                                 </a>
                                 @if(is_outstok($produk_lain))
                                 <div class="icon-info icon-sold">Kosong</div>
@@ -202,13 +202,13 @@
                         @endforeach
                     </ul>
                 </div>
-            </div><!--.product-list-->
+            </div>
             @endif
            
             <div class="row col-xs-12" id="comment-product">
                 <hr>
                 {{pluginTrustklik()}}
             </div>
-        </div> <!--.center_column-->
-    </div><!--.inner-column-->
+        </div>
+    </div>
 </div>

@@ -3,15 +3,15 @@
                     <div class="container">
                         <div class="row">
                             {{ Theme::partial('subscribe') }}   
-                            @foreach($tautan as $key=>$group)
+                            @foreach(all_menu() as $key=>$group)
                             <div id="links-foot" class="col-xs-12 col-sm-4 col-lg-2">
                                 <h4 class="title">{{$group->nama}}</h4>
                                 <div class="block-content">
                                     <ul>
-                                        @foreach($quickLink as $key=>$link)
+                                        @foreach($group->link as $key=>$link)
                                             @if($group->id == $link->tautanId)
                                             <li>
-                                                <a href='{{menu_url($link)}}'>{{$link->nama}}</a>
+                                                <a href="{{menu_url($link)}}">{{$link->nama}}</a>
                                             </li>
                                             @endif
                                         @endforeach

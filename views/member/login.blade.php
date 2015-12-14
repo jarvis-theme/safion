@@ -1,16 +1,7 @@
 <div id="breadcrumb">
     <div class="container">
-        <div class="col-xs-12 col-sm-7">Member Area</div>
-        <div class="col-xs-12 col-sm-5">
-        	<form action="{{url('search')}}" class="header_search" method="post">
-			<div class="input-group">
-		    	<input type="text" class="form-control" placeholder="Search" name="search" required>
-		    	<span class="input-group-btn">
-		    		<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-		    	</span>
-		    </div>
-		    </form>
-		</div>
+        <div class="col-xs-12 col-sm-12">Member Area</div>
+        
     </div>
 </div><br>
 <div class="container">
@@ -58,7 +49,7 @@
             	@foreach(vertical_banner() as $banner)
             	<div class="img-block">
             		<a href="{{url($banner->url)}}">
-            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('class'=>'img-responsive'))}}
+            			{{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('class'=>'img-responsive'))}}
         			</a>
                 </div>
             	@endforeach

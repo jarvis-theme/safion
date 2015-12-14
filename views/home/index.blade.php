@@ -8,7 +8,7 @@
                             @foreach(horizontal_banner() as $banner)    
                             <li class="item col-xs-12 col-sm-12">
                                 <a href="{{url($banner->url)}}">
-                                    {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
+                                    {{HTML::image(banner_image_url($banner->gambar), 'Info Promo', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
                                 </a>
                             </li>
                             @endforeach
@@ -25,6 +25,7 @@
                             <div class="row">
                                 <div id="produk" class="new-content">
                                     <ul class="grid">
+                                        {{-- */ $i=1 /* --}}
                                         @foreach(home_product() as $produk)
                                         <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
                                             <div class="prod-container">
@@ -45,11 +46,18 @@
                                                 <a href="{{product_url($produk)}}" class="buy-btn">Lihat</a>
                                             </div>
                                         </li>
+                                        @if($i % 2 == 0)
+                                        <div class="clr visible-xs"></div>
+                                        @endif
+                                        @if($i % 4 == 0)
+                                        <div class="clr visible-lg"></div>
+                                        @endif
+                                        {{-- */ $i++ /* --}}
                                         @endforeach
                                     </ul>
                                     <div class="clr"></div>
                                     <a class="view-all" href="{{url('produk')}}">View All</a>
-                                </div><!--.man-content-->
+                                </div>
 
                                 <div id="new" class="new-content">
                                     <ul class="grid">
@@ -58,7 +66,7 @@
                                             <div class="prod-container">
                                                 <div class="image-container">
                                                     <a href="{{product_url($produk)}}">
-                                                        {{HTML::image(product_image_url($produk->gambar1,'medium'), 'produk', array('class'=>'img-responsive'))}}
+                                                        {{HTML::image(product_image_url($produk->gambar1,'medium'), $produk->nama, array('class'=>'img-responsive'))}}
                                                     </a>
                                                     @if(is_outstok($produk))
                                                     <div class="icon-info icon-sold">Kosong</div>
@@ -77,7 +85,7 @@
                                     </ul>
                                     <div class="clr"></div>
                                     <a class="view-all" href="{{url('produk')}}">View All</a>
-                                </div><!--.man-content-->
+                                </div>
 
                                 <div id="best-seller" class="new-content">
                                     <ul class="grid">
@@ -86,7 +94,7 @@
                                             <div class="prod-container">
                                                 <div class="image-container">
                                                     <a href="{{product_url($produk)}}">
-                                                        {{HTML::image(product_image_url($produk->gambar1,'medium'), 'produk', array('class'=>'img-responsive'))}}
+                                                        {{HTML::image(product_image_url($produk->gambar1,'medium'), $produk->nama, array('class'=>'img-responsive'))}}
                                                     </a>
                                                     @if(is_outstok($produk))
                                                     <div class="icon-info icon-sold">Kosong</div>
@@ -105,11 +113,11 @@
                                     </ul>
                                     <div class="clr"></div>
                                     <a class="view-all" href="{{url('produk')}}">View All</a>
-                                </div><!--.women-content-->
-                            </div><!--.row-->
-                        </div><!--.product_list-->
+                                </div>
+                            </div>
+                        </div>
                         <div class="clr"></div>
-                    </div><!--#new-arrival-->
+                    </div>
                     
                     <div id="brand-carousel">
                         <div id="brand-slide" class="owl-carousel owl-theme">
@@ -121,9 +129,9 @@
                             </div>
                             @endforeach
                         </div>
-                    </div> <!--.p-carousel-->
-                </div> <!--.center_column-->
-            </div><!--.row-->
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </div>

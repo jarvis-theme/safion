@@ -6,8 +6,8 @@
                             	<ul class="block-content">
                                     @foreach(list_blog(2) as $artikel)
                                     <li>
-                                        <h5 class="title-news" style="margin-bottom: 5px;">{{short_description($artikel->judul, 28)}}</h5>
-                                        <p>{{short_description($artikel->isi, 150)}} <a class="read-more" href="{{blog_url($artikel)}}">Read More</a></p>
+                                        <h5 class="title-news" id="news">{{short_description($artikel->judul, 28)}}</h5>
+                                        <p>{{short_description($artikel->isi, 150)}} <a class="read-more" href="{{blog_url($artikel)}}">Selengkapnya</a></p>
                                         <span class="date-post"><i class="fa fa-calendar"></i> {{date("d F Y", strtotime($artikel->created_at))}}</span>
                                     </li>
                                     @endforeach
@@ -17,12 +17,12 @@
                                 @foreach(vertical_banner() as $banners)
                             	<div class="img-block">
                             		<a href="{{url($banners->url)}}">
-                                        {{HTML::image(banner_image_url($banners->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
+                                        {{HTML::image(banner_image_url($banners->gambar),'Info Promo',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
                                     </a>
                                 </div>
                                 @endforeach
                             </div>
-                        </div><!--#left_sidebar-->
+                        </div>
                         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
                             <div class="product-list">
                                 <h1 class="title">{{$data->judul}}</h1>
@@ -33,6 +33,6 @@
                                     </article>
                                 </div>
                             </div>
-                        </div> <!--.center_column-->
-                    </div><!--.inner-column-->
+                        </div>
+                    </div>
                 </div>

@@ -15,13 +15,12 @@
                     <li class="shopping-cart" id="shoppingcartplace">
                         <a href="{{url('checkout')}}">{{shopping_cart()}}</a>
                     </li>
-                    
                 </ul>
             </div>
             <div class="clr"></div>
         </div>
-    </div> <!--.top-head-->
-    
+    </div>
+
     <div class="container">
         <div class="row">
             <div id="logo" class="col-xs-12 col-sm-12 col-lg-4">
@@ -81,11 +80,18 @@
                                 @endif
                             </li>
                             @endif
-
                         @endforeach                    
                     </ul>       
                 </div>
-            </nav> <!-- .nav - END -->
+            </nav>
+            <form class="navbar col-lg-6 col-xs-12" id="frm-search" action="{{URL::to('search')}}" method="post">
+                <div class="input-group" id="searchs">
+                    <input id="src-text" class="form-control" name="search" placeholder="Cari produk" type="text" required>
+                    <span class="input-group-btn">
+                        <button class="btn btn-warning" type="submit"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
             <div class="clr"></div>
         </div>
     </div>

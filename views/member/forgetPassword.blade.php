@@ -10,7 +10,7 @@
             <h2>Lupa Password</h2><hr><br>
             <form class="form-horizontal" action="{{url('member/forgetpassword')}}" method="post">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Masukkan email anda" name='recoveryEmail' required>
+                    <input type="text" class="form-control" placeholder="Masukkan email anda" name="recoveryEmail" required>
                     <span class="input-group-btn">
                         <button class="btn btn-danger" type="submit">Reset Password</button>
                     </span>

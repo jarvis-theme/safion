@@ -1,27 +1,3 @@
-@if($errors->all())
-<div class="alert alert-error">
-	We encountered the following errors:
-	<br>
-	<ul>
-		@foreach($errors->all() as $message)
-		<li>{{ $message }}</li>
-		@endforeach
-	</ul>
-</div>
-@endif
-
-@if(Session::has('error'))
-<div class="alert alert-error">
-	<p>Password lama anda tidak benar, silakan coba lagi.</p>
-</div>
-@endif
-
-@if(Session::has('success'))
-<div class="success" id='message' style='display:none'>
-	<p>Informasi anda berhasil di update.</p>
-</div>
-@endif
-
 <div class="top-list container">
     <h2 class="title"><i class="fa fa-history"></i> &nbsp;Order History</h2>
     <div class="clr"></div>
@@ -56,22 +32,10 @@
 							</tr>
 						</thead>
 						<tbody>
-						@foreach ($order as $item)
+						@foreach (list_order() as $item)
 							<tr>
-								<td>
-								@if($pengaturan->checkoutType==3)	
-									{{prefixOrder().$item->kodePreorder}}
-								@else 
-									{{prefixOrder().$item->kodeOrder}}
-								@endif
-								</td>
-								<td>
-									@if($pengaturan->checkoutType==3)	
-										{{waktu($item->tanggalPreorder)}}
-									@else 
-										{{waktu($item->tanggalOrder)}}
-									@endif	
-								</td>
+								<td>{{$pengaturan->checkoutType==3 ? prefixOrder().$item->kodePreorder : prefixOrder().$item->kodeOrder}}</td>
+								<td>{{$pengaturan->checkoutType==3 ? waktu($item->tanggalPreorder) : waktu($item->tanggalOrder)}}</td>
 								<td class="desc">
 									<ul>
 									@if($pengaturan->checkoutType==3) 
@@ -85,12 +49,8 @@
 									@endif
 									</ul>
 								</td>
-								<td class="quantity">
-									{{ price($item->total)	}}
-								</td>
-								<td class="sub-price">
-									{{ $item->noResi }}
-								</td>
+								<td class="quantity">{{ price($item->total)	}}</td>
+								<td class="sub-price">{{ $item->noResi }}</td>
 								<td class="total-price">
 								@if($pengaturan->checkoutType==1) 
 									@if($item->status==0)
@@ -152,7 +112,7 @@
 						</tbody>
 					</table>
 				</div>
-                {{$order->links()}} 
+                {{list_order()->links()}} 
 				@else
 					<span> Belum ada data order</span>
 				@endif
@@ -171,12 +131,8 @@
 						<tbody>
 							@foreach ($inquiry as $item)
 							<tr>
-								<td>
-									{{prefixOrder()}}{{$item->kodeInquiry}}
-								</td>
-								<td>
-									{{waktu($item->created_at)}}
-								</td>
+								<td>{{prefixOrder().$item->kodeInquiry}}</td>
+								<td>{{waktu($item->created_at)}}</td>
 								<td>
 									@foreach ($item->detailInquiry as $detail)
 									<li>{{$detail->produk->nama}} {{$detail->opsiSkuId !=0 ? '('.$detail->opsisku["opsi1"].($detail->opsisku["opsi2"] != '' ? ' / '.$detail->opsisku["opsi2"]:'').($detail->opsisku["opsi3"] !='' ? ' / '.$detail->opsisku["opsi3"]:'').')':''}} - {{$detail->qty}}</li>
@@ -196,9 +152,7 @@
 						</tbody>
 				@else
 					<tr>
-						<td colspan="2">
-							Inquiry anda masih kosong.
-						</td>
+						<td colspan="2">Inquiry anda masih kosong.</td>
 					</tr>
 				@endif
 					</table>

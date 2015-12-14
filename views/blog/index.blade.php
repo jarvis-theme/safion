@@ -11,7 +11,7 @@
             	<ul class="block-content">
             		@foreach(recentBlog(null,5) as $artikel)
                     <li>
-                        <h5 class="title-news" style="margin-bottom: 5px;"><a href="{{blog_url($artikel)}}">{{short_description($artikel->judul, 28)}}</a></h5>
+                        <h5 class="title-news" id="news"><a href="{{blog_url($artikel)}}">{{short_description($artikel->judul, 28)}}</a></h5>
                         <span class="date-post"><i class="fa fa-calendar"></i> {{date("d F Y", strtotime($artikel->created_at))}}</span>
                     </li>
                     @endforeach
@@ -21,7 +21,7 @@
             	<div class="title"><h2>Kategori</h2></div>
             	<ul class="block-content">
             		@foreach(list_blog_category() as $kat)
-            		<span style="text-decoration: underline;"><a href="{{blog_category_url($kat)}}">{{$kat->nama}}</a></span>&nbsp;&nbsp;
+            		<span class="underline"><a href="{{blog_category_url($kat)}}">{{$kat->nama}}</a></span>&nbsp;&nbsp;
                     @endforeach	
                 </ul>
             </div>
@@ -29,12 +29,12 @@
                 @foreach(vertical_banner() as $banner)
             	<div class="img-block">
             		<a href="{{url($banner->url)}}">
-            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
+            			{{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
         			</a>
                 </div>
                 @endforeach
             </div>
-        </div><!--#left_sidebar-->
+        </div>
         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
             <div class="product-list">
                 <div class="top-list">
@@ -44,7 +44,7 @@
                 @if( count(list_blog(null,@$blog_category)) > 0)
                 <div class="row">
                     @foreach(list_blog(null,@$blog_category) as $blog)
-                    <article class="col-lg-12" style="margin-bottom:10px">
+                    <article class="col-lg-12 src-result">
                         <h2 class="title"><a href="{{blog_url($blog)}}">{{$blog->judul}}</a></h2>
 			            <p>
 			            	<small><i class="fa fa-calendar"></i> {{waktuTgl($blog->updated_at)}}</small>
@@ -61,11 +61,9 @@
 					{{list_blog(null,@$blog_category)->links()}}
                 </div>
                 @else
-                <article style="font-style:italic; text-align:center;">
-                    Blog tidak ditemukan.
-                </article>
+                <article class="noresult">Blog tidak ditemukan.</article>
                 @endif
             </div>
-        </div> <!--.center_column-->
-    </div><!--.inner-column-->
+        </div>
+    </div>
 </div>

@@ -1,9 +1,3 @@
-@if(Session::has('message'))
-<div class="error" id='message' style='display:none'>
-	<p>Maaf, kode order anda tidak ditemukan.</p>
-</div>
-@endif
-
 <div class="container">
 	<div class="inner-column row">
         <div id="left_sidebar" class="col-lg-3 col-xs-12 col-sm-4">
@@ -11,12 +5,12 @@
                 @foreach(vertical_banner() as $banner)
             	<div class="img-block">
             		<a href="{{url($banner->url)}}">
-            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('class'=>'img-responsive'))}}
+            			{{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('class'=>'img-responsive'))}}
         			</a>
                 </div>
                 @endforeach
             </div>
-        </div><!--#left_sidebar-->
+        </div>
         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
 	        <div class="contact-us">
 	            <h2 class="title">Konfirmasi Order</h2>
@@ -29,6 +23,6 @@
                     {{Form::close()}}
 	            </div>
 	        </div>
-	    </div> <!--.center_column-->
+	    </div>
     </div>
 </div>

@@ -15,7 +15,7 @@
             @endforeach 
             @foreach(list_payments() as $pay)
                 @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
-                <img src="{{url('img/bank/ipaymu.jpg')}}" alt="ipaymu" class="banks" />
+                <img src="{{url('img/bank/ipaymu.jpg')}}" alt="ipaymu" title="Payment" class="banks" />
                 @endif
                 @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
                 <img src="{{url('img/bitcoin.png')}}" alt="bitcoin" title="Payment" />
@@ -25,7 +25,7 @@
                 @endif
             @endforeach
             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
-            <img src="{{url('img/bank/doku.jpg')}}" alt="doku myshortcart" class="banks" />
+            <img src="{{url('img/bank/doku.jpg')}}" alt="doku myshortcart" title="Payment" class="banks" />
             @endif 
         </div>
     </div>

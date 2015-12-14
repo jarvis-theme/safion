@@ -9,13 +9,13 @@
                                     <li>
                                         <a href="{{category_url($side_menu)}}">{{$side_menu->nama}}<!-- <span class="arrow-right"></span> --></a>
                                         @if($side_menu->anak->count() != 0)
-                                        <ul style="padding: 0px 20px;">
+                                        <ul class="sidenav">
                                             @foreach($side_menu->anak as $submenu)
                                             @if($submenu->parent == $side_menu->id)
                                             <li>
                                                 <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
                                                 @if($submenu->anak->count() != 0)
-                                                <ul style="padding: 0px 20px;">
+                                                <ul class="sidenav">
                                                     @foreach($submenu->anak as $submenu2)
                                                     @if($submenu2->parent == $submenu->id)
                                                     <li>
@@ -38,22 +38,22 @@
                             @endif
                             @if(count(best_seller()) > 0)
                             <div id="best-seller" class="block">
-                            	<div class="title"><h2>Best Sellling</h2></div>
+                            	<div class="title"><h2>Produk Terlaris</h2></div>
                             	<ul class="block-content">
                                     @foreach(best_seller() as $best)
                                     <li>
                                     	<a href="{{product_url($best)}}">
                                         	<div class="img-block">
-                                                {{HTML::image(product_image_url($best->gambar1,'thumb'),'produk',array('width'=>'81','height'=>'64'))}}
+                                                {{HTML::image(product_image_url($best->gambar1,'thumb'), $best->nama, array('width'=>'81','height'=>'64'))}}
                                             </div>
-                                            <p class="product-name">{{$best->nama}}</p>
+                                            <p class="product-name">{{short_description($best->nama,35)}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>
                                         </a>
                                     </li>
                                     @endforeach
                                 </ul>
                                 <div class="btn-more">
-                                	<a href="{{url('produk')}}">view more</a>
+                                	<a href="{{url('produk')}}">Lihat Semua</a>
                                 </div>
                             </div>
                             @endif
@@ -61,12 +61,12 @@
                                 @foreach(vertical_banner() as $banner)    
                                 <div class="img-block">
                                     <a href="{{url($banner->url)}}">
-                                        {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
+                                        {{HTML::image(banner_image_url($banner->gambar), 'Info Promo', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
                                     </a>
                                 </div>
                                 @endforeach 
                             </div><br>
-                        </div><!--#left_sidebar-->
+                        </div>
                         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
                             <div class="product-list">
                                 <div class="top-list">
@@ -85,31 +85,40 @@
                                 @if($jumlahCari != 0)
                                 <div class="row">
                                     <ul class="grid">
+                                        {{-- */ $i=1 /* --}}
                                         @foreach($hasilpro as $produks)
                                         <li class="col-xs-6 col-sm-4">
                                             <div class="image-container">
                                                 <a href="{{product_url($best)}}">
-                                                    {{HTML::image(product_image_url($produks->gambar1,'medium'),'produk',array('class'=>'img-responsive'))}}
+                                                    {{HTML::image(product_image_url($produks->gambar1,'medium'), $produks->nama,array('class'=>'img-responsive'))}}
                                                 </a>
                                             </div>
                                             <h5 class="product-name">{{short_description($produks->nama, 25)}}</h5>
                                             <span class="price">{{price($produks->hargaJual)}}</span>
-                                            <a class="view" href="{{product_url($produks)}}">Lihat</a>
+                                            <a class="buy-btn" href="{{product_url($produks)}}">Lihat</a>
                                         </li>
+                                        @if($i % 2 == 0)
+                                        <div class="clr visible-xs visible-sm"></div>
+                                        @endif
+                                        @if($i % 3 == 0)
+                                        <div class="clr visible-md visible-lg"></div>
+                                        @endif
+                                        {{-- */ $i++ /* --}}
                                         @endforeach
                                     </ul>
-                                    <div style="margin-left: 15px">
+                                    <div class="clr"></div>
+                                    <div class="srclist">
                                         @foreach($hasilhal as $myhal)
-                                        <article class="col-lg-12" style="margin-bottom:10px">
+                                        <article class="col-lg-12 src-result">
                                             <h4><strong>{{$myhal->judul}}</strong></h4>
                                             <blockquote>{{short_description($myhal->isi,300)}}</blockquote>
                                             <br><hr>
                                         </article>
                                         @endforeach
                                     </div>
-                                    <div style="margin-left: 15px">
+                                    <div class="srclist">
                                         @foreach($hasilblog as $myblog)
-                                        <article class="col-lg-12" style="margin-bottom:10px">
+                                        <article class="col-lg-12 src-result">
                                             <h2 class="title"><a href="{{url(blog_url($myblog))}}">{{$myblog->judul}}</a></h2>
                                             <p>
                                                 {{shortDescription($myblog->isi,300)}}<br>
@@ -120,19 +129,18 @@
                                         @endforeach
                                     </div>
                                 </div>
-                            	{{--$produk->links()--}}
                                 @else
                                 <article class="text-center">
                                     <i>Hasil pencarian tidak ditemukan</i>
                                 </article>
                                 @endif
                             </div>
-                        </div> <!--.center_column-->
-                    </div><!--.inner-column-->	
+                        </div>
+                    </div>
                     <div>
                         @foreach(horizontal_banner() as $banner)    
                         <a href="{{url($banner->url)}}">
-                            {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
+                            {{HTML::image(banner_image_url($banner->gambar), 'Info Promo', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
                         </a>
                         @endforeach 
                     </div><br>
