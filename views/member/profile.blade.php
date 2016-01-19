@@ -20,7 +20,7 @@
 				<div class="form-group">
 					<label for="inputName" class="col-md-2 control-label">Nama</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" id="inputName" name="nama" value="{{$user->nama}}" placeholder="Name" required>
+						<input type="text" class="form-control" id="inputName" name="nama" value="{{$user->nama}}" placeholder="Nama" required>
 					</div>
 				</div>            
 				<div class="form-group">
@@ -32,7 +32,7 @@
 				<div class="form-group">
 					<label for="inputPhone" class="col-md-2 control-label">Telepon</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" id="inputPhone" name="telp" value="{{$user->telp}}" placeholder="Phone" required>
+						<input type="text" class="form-control" id="inputPhone" name="telp" value="{{$user->telp}}" placeholder="Telepon" required>
 					</div>
 				</div>
 				<div class="form-group">
@@ -56,7 +56,7 @@
 				<div class="form-group">
 					<label for="inputAddress" class="col-md-2 control-label">Alamat</label>
 					<div class="col-md-4">
-					   <textarea class="form-control" rows="3" placeholder="Address" name="alamat" required>{{$user->alamat}}</textarea>
+					   <textarea class="form-control" rows="3" placeholder="Alamat" name="alamat" required>{{$user->alamat}}</textarea>
 					</div>
 				</div>
 				<div class="form-group">
@@ -75,13 +75,13 @@
 				<div class="form-group">
 					<label for="inputUsername" class="col-md-2 control-label">Password Baru</label>
 					<div class="col-md-4">
-						<input type="password" class="form-control" name="password" id="inputUsername" placeholder="Password">
+						<input type="password" class="form-control" name="password" id="inputUsername" placeholder="Password Baru">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputPassword" class="col-md-2 control-label">Ulang Password</label>
 					<div class="col-md-4">
-						<input type="password" class="form-control" name="password_confirmation" id="inputPassword" placeholder="Password">
+						<input type="password" class="form-control" name="password_confirmation" id="inputPassword" placeholder="Ulang Password">
 					</div>
 				</div>
 				<hr />

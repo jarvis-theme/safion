@@ -13,6 +13,7 @@ define(['jquery','bootstrap'], function($)
                 $(this).toggleClass('active');
                 $(this).next().slideToggle(250);
             });
+            // $('.dropdown-menu1').dropdown()
         };
     }
 });

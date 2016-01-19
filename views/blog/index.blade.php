@@ -6,6 +6,7 @@
 <div class="container" id="main-layout">
     <div class="inner-column row">
         <div id="left_sidebar" class="col-lg-3 col-xs-12 col-sm-4">
+            @if(recentBlog(null,5)->count() > 0)
             <div id="latest-news" class="block">
             	<div class="title"><h2>Artikel Terbaru</h2></div>
             	<ul class="block-content">
@@ -17,6 +18,8 @@
                     @endforeach
                 </ul>
             </div>
+            @endif
+            @if(list_blog_category()->count() > 0)
             <div id="latest-news" class="block">
             	<div class="title"><h2>Kategori</h2></div>
             	<ul class="block-content">
@@ -25,15 +28,18 @@
                     @endforeach	
                 </ul>
             </div>
+            @endif
+            @if(vertical_banner()->count() > 0)
             <div id="advertising" class="block">
                 @foreach(vertical_banner() as $banner)
             	<div class="img-block">
             		<a href="{{url($banner->url)}}">
-            			{{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
+            			{{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('class'=>'img-responsive'))}}
         			</a>
                 </div>
                 @endforeach
             </div>
+            @endif
         </div>
         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
             <div class="product-list">

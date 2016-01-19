@@ -24,7 +24,7 @@
     <div class="container">
         <div class="row">
             <div id="logo" class="col-xs-12 col-sm-12 col-lg-4">
-            @if(@getimagesize( url(logo_image_url()) ))
+            @if( logo_image_url() )
                 <a href="{{url('home')}}">
                     {{HTML::image(logo_image_url(),'logo')}}
                 </a>
@@ -48,9 +48,8 @@
                     <a class="navbar-brand mobile-only" href="#">MENU</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav navbar-right">
                         @foreach(list_category() as $key=>$menu)
-
                             @if($menu->parent=='0')
                             <li class="dropdown">
                                 @if(count($menu->anak) < 1)
@@ -64,7 +63,7 @@
                                 <ul class="dropdown-menu">
                                     @foreach($menu->anak as $key => $submenu)
                                     <li><a href="{{category_url($submenu)}}">{{$submenu->nama}}</a></li>
-                                        @if(count($submenu->anak->count()) > 0)
+                                        @if($submenu->anak->count() > 0)
                                         <ul>
                                             @foreach($submenu->anak as $submenu2)
                                                 @if($submenu2->parent == $submenu->id)
@@ -80,8 +79,8 @@
                                 @endif
                             </li>
                             @endif
-                        @endforeach                    
-                    </ul>       
+                        @endforeach  
+                    </ul>
                 </div>
             </nav>
             <form class="navbar col-lg-6 col-xs-12" id="frm-search" action="{{URL::to('search')}}" method="post">

@@ -6,6 +6,7 @@
 <div class="container" id="main-layout">
 	<div class="inner-column row">
         <div class="col-lg-3 col-xs-12 col-sm-4 pull-right">
+        	@if(vertical_banner()->count() > 0)
             <div id="advertising" class="block">
             	@foreach(vertical_banner() as $banner)
             	<div class="img-block">
@@ -16,6 +17,7 @@
             	@endforeach
             </div>
             <br>
+            @endif
         </div>
         <div id="center_column" class="col-lg-7 col-xs-12 col-sm-8">
             {{Form::open(array('url'=>'member','method'=>'post','class'=>'form-horizontal'))}}

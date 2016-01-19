@@ -6,41 +6,59 @@
 <div class="container" id="main-layout">
     <div class="inner-column row">
         <div id="left_sidebar" class="col-lg-3 col-xs-12 col-sm-4">
-            @if(count(list_category()) > 0)
-            <div id="categories" class="block sidey">
-            	<ul class="block-content nav">
-                @foreach(list_category() as $side_menu)
+            @if(list_category()->count() > 0)
+            <div class="block accordion-widget">
+                <div class="title"><h2>Kategori</h2></div>
+                <div class="block-content accordion">
+                    @foreach(list_category() as $side_menu)
                     @if($side_menu->parent == '0')
-                    <li>
-                        <a href="{{category_url($side_menu)}}">{{$side_menu->nama}}<!-- <span class="arrow-right"></span> --></a>
+                    <div class="accordion-group side-accor">
+                        <div class="accordion-heading">
+                            @if(count($side_menu->anak) >= 1)
+                            <a href="{{category_url($side_menu)}}"><span class="accordion-toggle collapsed" data-toggle="collapse" href="#{{short_description(preg_replace('/[^a-zA-Z0-9-]/', '', $side_menu->nama),23)}}"></span>
+                            @else
+                            <a class="collapsed" href="{{category_url($side_menu)}}">
+                            @endif  
+                                {{$side_menu->nama}}
+                            </a>
+                        </div>
                         @if($side_menu->anak->count() != 0)
-                        <ul class="sidenav">
-                            @foreach($side_menu->anak as $submenu)
-                            @if($submenu->parent == $side_menu->id)
-                            <li>
-                                <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
-                                @if($submenu->anak->count() != 0)
-                                <ul class="sidenav">
-                                    @foreach($submenu->anak as $submenu2)
-                                    @if($submenu2->parent == $submenu->id)
-                                    <li>
-                                        <a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a>
-                                    </li>
+                        <div id="{{short_description(preg_replace('/[^a-zA-Z0-9-]/', '', $side_menu->nama),23)}}" class="accordion-body collapse submenu">
+                            <div class="accordion-inner">
+                                @foreach($side_menu->anak as $submenu)
+                                @if($submenu->parent == $side_menu->id)
+                                    <div class="accordion-heading">
+                                        @if(count($submenu->anak) > 0 )
+                                        <a href="{{category_url($submenu)}}"><span href="#{{short_description(preg_replace('/[^a-zA-Z0-9-]/', '', $submenu->nama),23)}}" class="accordion-toggle collapsed submenu" data-toggle="collapse"></span>
+                                        @else
+                                        <a href="{{category_url($submenu)}}" class="collapsed">
+                                        @endif
+                                            {{$submenu->nama}}
+                                        </a>
+                                    </div>
+                                    @if($submenu->anak->count() != 0)
+                                    <div id="{{short_description(preg_replace('/[^a-zA-Z0-9-]/', '', $submenu->nama),23)}}" class="accordion-body collapse">
+                                        <ul>
+                                            @foreach($submenu->anak as $submenu2)
+                                            @if($submenu2->parent == $submenu->id)
+                                            <li><a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a></li>
+                                            @endif
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                     @endif
-                                    @endforeach
-                                </ul>
                                 @endif
-                            </li>
-                            @endif
-                            @endforeach
-                        </ul>
+                                @endforeach
+                            </div>
+                        </div>
                         @endif
-                    </li>
+                    </div>
                     @endif
-                @endforeach
-                </ul>
+                    @endforeach
+                </div>
             </div>
             @endif
+            @if(best_seller()->count() > 0)
             <div id="best-seller" class="block">
             	<div class="title"><h2>Produk Terlaris</h2></div>
             	<ul class="block-content">
@@ -60,15 +78,18 @@
                 	<a href="{{url('produk')}}">view more</a>
                 </div>
             </div>
+            @endif
+            @if(vertical_banner()->count() > 0)
             <div id="advertising" class="block">
                 @foreach(vertical_banner() as $key => $banners)
                 <div class="img-block">
             		<a href="{{url($banners->url)}}">
-                        {{HTML::image(banner_image_url($banners->gambar),'Info Promo',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
+                        {{HTML::image(banner_image_url($banners->gambar),'Info Promo',array('class'=>'img-responsive'))}}
                     </a>
                 </div><br>
                 @endforeach
             </div>
+            @endif
         </div>
         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
             <form action="#" id="addorder">
@@ -84,28 +105,28 @@
                                     @if($produk->gambar1 != '')
                                     <li class="item">
                                         <a class="zoom fancybox" href="{{product_image_url($produk->gambar1,'large')}}" title="{{$produk->nama}}">
-                                        {{HTML::image(product_image_url($produk->gambar1,'medium'),'gambar1',array('width'=>'130', 'height'=>'174'))}}
+                                        {{HTML::image(product_image_url($produk->gambar1,'thumb'),'gambar1',array('width'=>'130'))}}
                                         </a>
                                     </li>
                                     @endif
                                     @if($produk->gambar2 != '')
                                     <li class="item">
                                         <a class="zoom fancybox" href="{{product_image_url($produk->gambar2,'large')}}" title="{{$produk->nama}}">
-                                        {{HTML::image(product_image_url($produk->gambar2,'medium'),'gambar2',array('width'=>'130', 'height'=>'174'))}}
+                                        {{HTML::image(product_image_url($produk->gambar2,'thumb'),'gambar2',array('width'=>'130'))}}
                                         </a>
                                     </li>
                                     @endif
                                     @if($produk->gambar3 != '')
                                     <li class="item">
                                         <a class="zoom fancybox" href="{{product_image_url($produk->gambar3,'large')}}" title="{{$produk->nama}}">
-                                        {{HTML::image(product_image_url($produk->gambar3,'medium'),'gambar3',array('width'=>'130', 'height'=>'174'))}}
+                                        {{HTML::image(product_image_url($produk->gambar3,'thumb'),'gambar3',array('width'=>'130'))}}
                                         </a>
                                     </li>
                                     @endif
                                     @if($produk->gambar4 != '')
                                     <li class="item">
                                         <a class="zoom fancybox" href="{{product_image_url($produk->gambar4,'large')}}" title="{{$produk->nama}}">
-                                        {{HTML::image(product_image_url($produk->gambar4,'medium'),'gambar4',array('width'=>'130', 'height'=>'174'))}}
+                                        {{HTML::image(product_image_url($produk->gambar4,'thumb'),'gambar4',array('width'=>'130'))}}
                                         </a>
                                     </li>
                                     @endif
@@ -147,7 +168,7 @@
                                                         <option value="">-- Pilih Opsi --</option>
                                                         @foreach ($opsiproduk as $key => $opsi)
                                                         <option value="{{$opsi->id}}" {{ $opsi->stok==0 ? 'disabled':''}} >
-                                                            {{$opsi->opsi1.($opsi->opsi2=='' ? '':' / '.$opsi->opsi2).($opsi->opsi3=='' ? '':' / '.$opsi->opsi3)}} {{jadiRupiah($opsi->harga)}}
+                                                            {{$opsi->opsi1.($opsi->opsi2=='' ? '':' / '.$opsi->opsi2).($opsi->opsi3=='' ? '':' / '.$opsi->opsi3)}} {{price($opsi->harga)}}
                                                         </option>
                                                         @endforeach
                                                     </select>
@@ -157,7 +178,7 @@
                                         @endif
                                         <div class="quantity">
                                         	<div class="form-group">
-                                                <label class="col-sm-4 control-label">Quantity :</label>
+                                                <label class="col-sm-4 control-label">Jumlah :</label>
                                                 <div class="col-sm-5">
                                                     <input type="text" class="form-control" name="qty" value="1">
                                                 </div>

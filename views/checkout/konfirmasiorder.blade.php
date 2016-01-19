@@ -88,7 +88,7 @@
         </div>
         <div class="row inner-column">
             <div class="col-md-5">
-            @if($order->jenisPembayaran==1) 
+            @if($order->jenisPembayaran==1 && $order->status == 0) 
                 @if($checkouttype==1) 
                 {{-- */  $form_url = 'konfirmasiorder/' /* --}}
                 @else 
@@ -116,12 +116,12 @@
                 <div class="form-group">
                     <label  class="control-label"> Jumlah:</label>
                     @if($checkouttype==1)        
-                    <input type="number" class="form-control" id="search" placeholder="jumlah yg terbayar" name="jumlah" value="{{$order->total}}" required>
+                    <input type="number" class="form-control" id="search" placeholder="Jumlah Transfer" name="jumlah" value="{{$order->total}}" required>
                     @else
                         @if($order->status < 2)
-                        <input class="form-control" id="search" placeholder="jumlah yg terbayar" type="number" name="jumlah" value="{{$order->dp}}" required>
+                        <input class="form-control" id="search" placeholder="Jumlah Transfer" type="number" name="jumlah" value="{{$order->dp}}" required>
                         @elseif(($order->status > 1 && $order->status < 4) || $order->status==7)
-                        <input class="form-control" id="search" placeholder="jumlah yg terbayar" type="number" name="jumlah" value="{{$order->total - $order->dp}}" required>
+                        <input class="form-control" id="search" placeholder="Jumlah Transfer" type="number" name="jumlah" value="{{$order->total - $order->dp}}" required>
                         @endif
                     @endif
                 </div>

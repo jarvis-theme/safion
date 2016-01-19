@@ -3,17 +3,19 @@
         <div class="container">
             <div class="inner-column row">
                 <div id="center_column" class="col-lg-12 col-xs-12">
-                    <div id="adv-home">
+                    @if(horizontal_banner()->count() > 0)
+                    <div id="adv-home" class="center">
                         <ul class="row">
                             @foreach(horizontal_banner() as $banner)    
                             <li class="item col-xs-12 col-sm-12">
                                 <a href="{{url($banner->url)}}">
-                                    {{HTML::image(banner_image_url($banner->gambar), 'Info Promo', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
+                                    {{HTML::image(banner_image_url($banner->gambar), 'Info Promo', array("class"=>"img-responsive"))}}
                                 </a>
                             </li>
                             @endforeach
                         </ul>
                     </div>
+                    @endif
                     <div id="new-arrival">
                         <h2>Produk Kami</h2>
                         <ul class="menu-new">
@@ -124,7 +126,7 @@
                             @foreach(list_koleksi() as $koleksi)
                             <div class="item">
                                 <a href="{{koleksi_url($koleksi)}}">
-                                    <img class="img-responsive" src="{{url(koleksi_image_url($koleksi->gambar,'medium'))}}" alt="brand" width="204" height="86" />
+                                    <img class="img-responsive" src="{{url(koleksi_image_url($koleksi->gambar,'medium'))}}" alt="brand" width="204" />
                                 </a>
                             </div>
                             @endforeach
