@@ -52,15 +52,15 @@
                                     </div>
                                     <hr>
                                     <div class="navigate comments clearfix">
-                                    @if(isset($prev))
-                                        <div class="pull-left"><a href="{{$prev->slug}}">&larr; Sebelumnya</a></div>
+                                    @if(prev_blog($detailblog))
+                                        <div class="pull-left"><a href="{{blog_url(prev_blog())}}">&larr; Sebelumnya</a></div>
                                     @else
                                         <div class="pull-right"></div>
                                     @endif
 
-                                    @if(isset($next))
+                                    @if(next_blog($detailblog))
                                         <div class="pull-right">
-                                            <a class="fr" href="{{$next->slug}}">Selanjutnya &rarr;</a>
+                                            <a class="fr" href="{{blog_url(next_blog())}}">Selanjutnya &rarr;</a>
                                         </div>
                                     @else
                                         <div class="pull-right"></div>
