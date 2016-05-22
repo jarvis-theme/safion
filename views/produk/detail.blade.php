@@ -145,7 +145,7 @@
                                 {{sosialShare(product_url($produk))}}
                             </div>
                             <div class="desc-prod">
-                            	<p class="title">Deskripsi Produk</p>
+                            	<h3 class="title">Deskripsi Produk</h3>
                                 <p>{{$produk->deskripsi}}</p>
                                 <div class="clr"></div>
                             </div>
@@ -228,7 +228,7 @@
            
             <div class="row col-xs-12" id="comment-product">
                 <hr>
-                {{ pluginComment(product_url($produk)) }}
+                {{ pluginComment(product_url($produk), @$produk) }}
             </div>
         </div>
     </div>

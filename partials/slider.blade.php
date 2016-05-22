@@ -4,12 +4,12 @@
             <ul class="slides">
                 @foreach(slideshow() as $slide)
                 <li>
-                    @if($slide->text=='')
+                    @if($slide->url=='')
                     <a href="#">
                     @else
-                    <a href="{{filter_link_url($slide->text)}}" target="_blank">
+                    <a href="{{filter_link_url($slide->url)}}" target="_blank">
                     @endif
-                        {{HTML::image(slide_image_url($slide->gambar), 'slideshow banner', array('class'=>'img-responsive'))}}
+                        {{HTML::image(slide_image_url($slide->gambar), $slide->title, array('class'=>'img-responsive'))}} 
                     </a>
                 </li>
                 @endforeach

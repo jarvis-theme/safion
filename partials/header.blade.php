@@ -2,7 +2,7 @@
     <div id="top-head">
         <div class="container">
             <div class="top-tel fl">
-                <i class="fa fa-phone"></i> <a style="color:#fff;">Call : {{@$kontak->telepon ? $kontak->telepon.'&nbsp;&nbsp;' : '-&nbsp;&nbsp;'}}</a>
+                <i class="fa fa-phone"></i> <a>Call : {{@$kontak->telepon ? $kontak->telepon.'&nbsp;&nbsp;' : '-&nbsp;&nbsp;'}}</a>
             </div>
             <div class="top-links fr">
                 <ul>
