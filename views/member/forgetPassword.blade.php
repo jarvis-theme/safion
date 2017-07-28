@@ -6,7 +6,7 @@
 <div class="container">
     <hr>
     <div class="inner-column row">
-        <div id="center_column" class="col-lg-6 col-xs-12 col-sm-5">
+        <div id="center_column" class="col-lg-6 col-xs-12 col-sm-6">
             <h2>Lupa Password</h2><hr><br>
             <form class="form-horizontal" action="{{url('member/forgetpassword')}}" method="post">
                 <div class="input-group">

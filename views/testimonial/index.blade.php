@@ -87,7 +87,7 @@
                 <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
                     <div class="contact-us">
                         <h2 class="title">Testimonial</h2>
-                        <div class="contact-desc">
+                        <div class="contact-desc pages">
                             @foreach(list_testimonial() as $key=>$value)
                             <article class="col-lg-12 src-result">
                                 <h4><strong><i class="fa fa-user"></i> {{$value->nama}}</strong></h4>

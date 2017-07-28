@@ -50,7 +50,7 @@ return array(
     ),
     'num_display' => array(
         'home_product'=>8,
-        'main_product'=>12,
+        'main_product'=>20,
         'related_product'=>4,
         'latest_product'=>4,
         'bestseller'=>4,

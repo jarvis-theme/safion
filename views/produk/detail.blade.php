@@ -60,13 +60,13 @@
             @endif
             @if(best_seller()->count() > 0)
             <div id="best-seller" class="block">
-            	<div class="title"><h2>Produk Terlaris</h2></div>
-            	<ul class="block-content">
+                <div class="title"><h2>Produk Terlaris</h2></div>
+                <ul class="block-content">
                     @foreach(best_seller(4) as $best)
                     <li>
-                    	<a href="{{product_url($best)}}">
-                        	<div class="img-block">
-                                {{HTML::image(product_image_url($best->gambar1,'thumb'), $best->nama,array('width'=>'81','height'=>'64'))}}
+                        <a href="{{product_url($best)}}">
+                            <div class="img-block">
+                                {{HTML::image(product_image_url($best->gambar1,'thumb'), $best->nama,array('class'=>'best-product'))}}
                             </div>
                             <p class="product-name">{{short_description($best->nama,35)}}</p>
                             <p class="price">{{price($best->hargaJual)}}</p> 
@@ -75,7 +75,7 @@
                     @endforeach
                 </ul>
                 <div class="btn-more">
-                	<a href="{{url('produk')}}">view more</a>
+                    <a href="{{url('produk')}}">Lihat Semua</a>
                 </div>
             </div>
             @endif
@@ -83,25 +83,40 @@
             <div id="advertising" class="block">
                 @foreach(vertical_banner() as $key => $banners)
                 <div class="img-block">
-            		<a href="{{url($banners->url)}}">
+                    <a href="{{url($banners->url)}}">
                         {{HTML::image(banner_image_url($banners->gambar),'Info Promo',array('class'=>'img-responsive'))}}
                     </a>
-                </div><br>
+                </div>
                 @endforeach
             </div>
             @endif
         </div>
         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
             <form action="#" id="addorder">
-            	<div class="product-details">
-                	<div class="row">
-                    	<div id="prod-left" class="col-lg-6 col-xs-12 col-sm-6">
-                        	<div class="big-image">
+                <div class="product-details pages">
+                    <div class="row">
+                        <div id="prod-left" class="col-lg-6 col-xs-12 col-sm-6">
+                            <div class="big-image">
                                 {{HTML::image(product_image_url($produk->gambar1,'large'), $produk->nama,array('width'=>'419','height'=>'563'))}}
                                 <a class="zoom fancybox" href="{{product_image_url($produk->gambar1,'large')}}" title="{{$produk->nama}}">&nbsp;</a>
                             </div>
+                            {{--*/ $x=0; /*--}}
+                            @if($produk->gambar1!='')
+                            {{--*/ $x++; /*--}}
+                            @endif
+                            @if($produk->gambar2!='')
+                            {{--*/ $x++; /*--}}
+                            @endif
+                            @if($produk->gambar3!='')
+                            {{--*/ $x++; /*--}}
+                            @endif
+                            @if($produk->gambar4!='')
+                            {{--*/ $x++; /*--}}
+                            @endif
+
+                            @if($x > 1)
                             <div id="thumb-view">
-                            	<ul id="thumb-list" class="owl-carousel owl-theme">
+                                <ul id="thumb-list" class="owl-carousel owl-theme">
                                     @if($produk->gambar1 != '')
                                     <li class="item">
                                         <a class="zoom fancybox" href="{{product_image_url($produk->gambar1,'large')}}" title="{{$produk->nama}}">
@@ -132,9 +147,10 @@
                                     @endif
                                 </ul>
                             </div>
+                            @endif
                         </div>
                         <div id="prod-right" class="col-lg-6 col-xs-12 col-sm-6">
-                        	<h2 class="name-title">{{$produk->nama}}</h2>
+                            <h2 class="name-title">{{$produk->nama}}</h2>
                             <span class="price">
                             @if($produk->hargaCoret != 0)
                             <s>{{price($produk->hargaCoret)}}</s>&nbsp;&nbsp;
@@ -145,25 +161,25 @@
                                 {{sosialShare(product_url($produk))}}
                             </div>
                             <div class="desc-prod">
-                            	<h3 class="title">Deskripsi Produk</h3>
+                                <h3 class="title">Deskripsi Produk</h3>
                                 <p>{{$produk->deskripsi}}</p>
                                 <div class="clr"></div>
                             </div>
                             <div class="avail-info">
                                 @if($produk->stok > 0)
-                            	<i class="instock" id="stock"></i><span>Tersedia, Stok {{$produk->stok}} item</span>
+                                <i class="instock" id="stock"></i><span>Tersedia, Stok {{$produk->stok}} item</span>
                                 @else
                                 <i class="fa fa-times" id="empty-stock"></i><span>Habis</span>
                                 @endif
                             </div>
                             <div class="attribute">
-                            	<fieldset class="attribute_fieldset">
-                                	<div class="attribute_list">
+                                <fieldset class="attribute_fieldset">
+                                    <div class="attribute_list">
                                         @if($opsiproduk->count() > 0)                 
                                         <div class="size-list">
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label">Opsi :</label>
-                                                <div class="col-sm-5">
+                                                <label class="col-lg-4 control-label">Opsi :</label>
+                                                <div class="col-lg-5">
                                                     <select class="form-control attribute_select" name="opsiproduk">
                                                         <option value="">-- Pilih Opsi --</option>
                                                         @foreach ($opsiproduk as $key => $opsi)
@@ -177,20 +193,18 @@
                                         </div>
                                         @endif
                                         <div class="quantity">
-                                        	<div class="form-group">
-                                                <label class="col-sm-4 control-label">Jumlah :</label>
-                                                <div class="col-sm-5">
-                                                    <input type="text" class="form-control" name="qty" value="1">
+                                            <div class="form-group">
+                                                <label class="col-lg-4 control-label">Jumlah :</label>
+                                                <div class="col-lg-5">
+                                                    <input type="number" class="form-control" name="qty" pattern="[0-9]" title="jumlah" value="1">
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <button class="btn addtocart" type="submit">Beli</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </fieldset>
-                            </div>
-                            <div class="clr"></div>
-                            <div class="btm-details">
-                                <button class="btn addtocart" type="submit">Beli</button>
-                                <div class="clr"></div>
                             </div>
                         </div>
                         <div class="clr"></div>
@@ -199,7 +213,7 @@
             </form>
             @if(count(other_product($produk)) > 0)
             <div id="related-product" class="product-list">
-                <h2 class="title">Related Product</h2>
+                <h2 class="title">Produk Lainnya</h2>
                 <div class="row">
                     <ul class="grid">
                         @foreach(other_product($produk) as $produk_lain)
@@ -216,7 +230,7 @@
                                 <div class="icon-info icon-new">Baru</div>
                                 @endif
                             </div>
-                            <h5 class="product-name">{{$produk_lain->nama}}</h5>
+                            <h5 class="product-name">{{short_description($produk_lain->nama,40)}}</h5>
                             <span class="price">{{price($produk_lain->hargaJual)}}</span>
                             <a href="{{product_url($produk)}}" class="buy-btn">Lihat</a>
                         </li>

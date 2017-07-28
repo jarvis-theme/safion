@@ -105,11 +105,11 @@
                     {{Form::open(array('url'=> $form_url.$order->id, 'method'=>'put'))}}                           
                         <div class="form-group">
                             <label  class="control-label"> Nama Pengirim:</label>
-                            <input type="text" class="form-control" id="search" placeholder="Nama Pengirim" name="nama" required>
+                            <input type="text" class="form-control" placeholder="Nama Pengirim" name="nama" required>
                         </div>
                         <div class="form-group">
                             <label  class="control-label"> No Rekening:</label>
-                            <input type="number" class="form-control" id="search" placeholder="No Rekening" name="noRekPengirim" required>
+                            <input type="number" class="form-control" placeholder="No Rekening" name="noRekPengirim" style="height: 36px" required>
                         </div>
                         <div class="form-group">
                             <label  class="control-label"> Rekening Tujuan:</label>
@@ -123,12 +123,12 @@
                         <div class="form-group">
                             <label  class="control-label"> Jumlah:</label>
                             @if($checkouttype==1)        
-                            <input type="number" class="form-control" id="search" placeholder="Jumlah Transfer" name="jumlah" value="{{$order->total}}" required>
+                            <input type="number" class="form-control" placeholder="Jumlah Transfer" name="jumlah" value="{{$order->total}}" style="height: 36px;" required>
                             @else
                                 @if($order->status < 2)
-                                <input class="form-control" id="search" placeholder="Jumlah Transfer" type="number" name="jumlah" value="{{$order->dp}}" required>
+                                <input class="form-control" placeholder="Jumlah Transfer" type="number" name="jumlah" value="{{$order->dp}}" required>
                                 @elseif(($order->status > 1 && $order->status < 4) || $order->status==7)
-                                <input class="form-control" id="search" placeholder="Jumlah Transfer" type="number" name="jumlah" value="{{$order->total - $order->dp}}" required>
+                                <input class="form-control" id="search" placeholder="Jumlah Transfer" type="number" name="jumlah" value="{{$order->total - $order->dp}}"  style="height: 36px;" required>
                                 @endif
                             @endif
                         </div>

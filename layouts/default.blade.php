@@ -6,7 +6,7 @@
         <title>{{ Theme::place('title') }}</title>
         {{ Theme::partial('seostuff') }} 
         {{ Theme::partial('defaultcss') }} 
-        {{generate_theme_js('safion/assets/js/lib/modernizr.custom.28468.js')}} 
+        {{ generate_theme_js('safion/assets/js/lib/modernizr.custom.28468.js') }} 
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 

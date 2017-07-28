@@ -27,7 +27,7 @@
                             </div>
                             @endif
                         </div>
-                        <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
+                        <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8 pages">
                             <div class="product-list">
                             	<div class="entry">
                                     <!-- <h2 class="title">Customer Service</h2> -->

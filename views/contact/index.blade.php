@@ -93,11 +93,12 @@
                         <iframe class="maplocation" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $kontak->alamat }}&amp;aq=0&amp;oq={{ $kontak->alamat }}&amp;sspn={{ $kontak->lat.','.$kontak->lng }}&amp;ie=UTF8&amp;hq=&amp;hnear={{ $kontak->alamat }}&amp;t=m&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br />
                     @endif
                 </div>
+                <div class="clearfix"></div>
                 <div class="contact-desc">
                     <p><strong>Alamat :</strong> {{$kontak->alamat}}</p>
-                    <span><i class="phone"></i> {{$kontak->telepon ? $kontak->telepon : ' - '}}</span>
-                    <span><i class="bbm"></i> {{$kontak->bb ? $kontak->bb : '&nbsp;&nbsp;-&nbsp;'}}</span>
-                    <span><i class="mail"></i> {{$kontak->email}}</span>
+                    <span><i class="fa fa-phone"></i> {{$kontak->telepon ? $kontak->telepon : ' - '}}</span>
+                    <span><i class="fa fa-comment"></i> {{$kontak->bb ? $kontak->bb : '&nbsp;&nbsp;-&nbsp;'}}</span>
+                    <span><i class="fa fa-envelope"></i> {{$kontak->email}}</span>
                     <div class="clr"></div>
                 </div>
                 <br><br>

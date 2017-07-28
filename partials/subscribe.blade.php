@@ -30,7 +30,7 @@
             <img src="{{url('img/bank/doku.jpg')}}" alt="doku myshortcart" title="Doku" class="banks" />
             @endif 
             @if(count(list_veritrans()) > 0 && list_veritrans()->status == 1 && list_veritrans()->type == 1)
-            <img src="{{url('img/bank/veritrans.png')}}" alt="Veritrans" title="Veritrans" class="banks" >
+            <img src="{{url('img/bank/midtrans.png')}}" alt="Midtrans" title="Midtrans" class="banks midtrans" >
             @endif
         </div>
     </div>

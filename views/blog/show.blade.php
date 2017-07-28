@@ -36,7 +36,7 @@
                             </div>
                             @endif
                         </div>
-                        <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
+                        <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8n pages">
                             <div class="product-list">
                                 <section class="content">
                                     <div class="entry">

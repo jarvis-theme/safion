@@ -83,15 +83,17 @@
                     </ul>
                 </div>
             </nav>
-            <form class="navbar col-lg-6 col-xs-12" id="frm-search" action="{{URL::to('search')}}" method="post">
-                <div class="input-group" id="searchs">
-                    <input id="src-text" class="form-control" name="search" placeholder="Cari produk" type="text" required>
-                    <span class="input-group-btn">
-                        <button class="btn btn-warning" type="submit"><i class="fa fa-search"></i></button>
-                    </span>
-                </div>
-            </form>
-            <div class="clr"></div>
+            <div class="col-lg-3 col-xs-12 pull-right">
+                <form class="navbar" id="frm-search" action="{{URL::to('search')}}" method="post">
+                    <div class="input-group" id="searchs">
+                        <input id="src-text" class="form-control" name="search" placeholder="Cari produk" type="text" required>
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning" type="submit"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+                <div class="clr"></div>
+            </div>
         </div>
     </div>
 </header>

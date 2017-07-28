@@ -68,7 +68,7 @@
                     <li>
                     	<a href="{{product_url($best)}}">
                         	<div class="img-block">
-                                {{HTML::image(product_image_url($best->gambar1,'thumb'), $best->nama,array('width'=>'81','height'=>'64'))}}
+                                {{HTML::image(product_image_url($best->gambar1,'thumb'), $best->nama,array('class'=>'best-product'))}}
                             </div>
                             <p class="product-name">{{short_description($best->nama,35)}}</p>
                             <p class="price">{{price($best->hargaJual)}}</p>
@@ -131,9 +131,7 @@
                 </div>
             </div>
             <div class="clr"></div>
-            <div class="pagination">
-                {{list_product(null, @$category)->links()}}
-            </div>
+            {{list_product(null, @$category)->links()}}
             @else
             <article class="noresult">Produk tidak ditemukan.</article>
             @endif
