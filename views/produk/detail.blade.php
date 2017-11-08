@@ -232,7 +232,7 @@
                             </div>
                             <h5 class="product-name">{{short_description($produk_lain->nama,40)}}</h5>
                             <span class="price">{{price($produk_lain->hargaJual)}}</span>
-                            <a href="{{product_url($produk)}}" class="buy-btn">Lihat</a>
+                            <a href="{{product_url($produk_lain)}}" class="buy-btn">Lihat</a>
                         </li>
                         @endforeach
                     </ul>
